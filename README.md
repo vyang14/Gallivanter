@@ -27,6 +27,6 @@
   This project does not include any tests.
   
   ## Questions
-  If you would like to see more of our work, checkout our GitHub repositories under the user names: ```TeagrinForde```, ```vyang14```, ```fairiberry```, and ```CharlesWright```.
+  If you would like to see more of our work, checkout our GitHub repositories under the user names: ```TeagrinForde```, ```vyang14```, ```fairiberry```, and ```Groceat```.
   <br>
-  If you have any additional questions, please contact us directly at:  TeagrinB@gmail.com, vyang1014888@gmail.com, farrahsyed97@gmail.com, or CHARLES EMAIL HERE!
+  If you have any additional questions, please contact us directly at:  TeagrinB@gmail.com, vyang1014888@gmail.com, farrahsyed97@gmail.com, or bhyfch1@gmail.com!
