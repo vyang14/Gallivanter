@@ -28,13 +28,7 @@ CompletedTrip.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    request_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'UserRequest',
-        key: 'id',
-      },
-    },
+    
   },
   {
     sequelize,

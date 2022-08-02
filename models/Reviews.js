@@ -28,13 +28,6 @@ Reviews.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'reader',
-        key: 'id',
-      },
-    },
   },
   {
     sequelize,
