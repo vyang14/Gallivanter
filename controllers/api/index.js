@@ -1,13 +1,13 @@
 const router = require('express').Router();
-const userRoutes = require('./userRoutes');
-const completedtripRoute = require('./completedtripRoute');
-const reviewsRoutes = require('./reviewsRoutes');
-const userrequestRoute = require('./userrequestRoute');
+const userRoute = require('./user-routes');
+const completedTripRoute = require('./completedTrip-routes');
+const reviewsRoute = require('./reviewsRoutes');
+const userRequestRoute = require('./userRequest-routes');
 
-router.use('/users', userRoutes);
-router.use('/completedtrips', completedtripRoute);
-router.use('/reviews', reviewsRoutes);
-router.use('/completedtrips', userrequestRoute);
+router.use('/users', userRoute);
+router.use('/completedTrips', completedTripRoute);
+router.use('/reviews', reviewsRoute);
+router.use('/userRequests', userRequestRoute);
 
 module.exports = router;
 
