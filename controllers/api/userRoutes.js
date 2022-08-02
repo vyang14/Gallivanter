@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 // GET a single reader
 router.get('/:id', async (req, res) => {
   try {
-    const readerData = await Reader.findByPk(req.params.id, {
+    const rerData = await Reader.findByPk(req.params.id, {
       // Add Book as a second model to JOIN with
       include: [{ model: LibraryCard }, { model: Book }],
     });
