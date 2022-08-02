@@ -3,24 +3,20 @@ const Completedtrip = require('./Completedtrip');
 const Reviews = require('./Reviews');
 const UserRequest = require('./UserRequest');
 
-Completedtrip.hasOne(UserRequest, {
+UserRequest.hasOne(Completedtrip, {
   foreignKey: 'UserRequest_id',
   onDelete: 'CASCADE',
 });
-
-UserRequest.belongsTo(User, {
-  foreignKey: 'User_id',
-});
-
 // Define a Driver as having many Cars, thus creating a foreign key in the `car` table
 User.hasMany(UserRequest, {
-  foreignKey: 'driver_id',
+  foreignKey: 'user_id',
   onDelete: 'CASCADE',
 });
 
 // The association can also be created from the Car side
-Completedtrip.belongsTo(UserRequest, {
-  foreignKey: 'driver_id',
-});
+Completedtrip.hasMany(Reviews, {
+    foreignKey: 'Completedtrip_id',
+    onDelete: 'CASCADE',
+  });
 
 module.exports = { User, UserRequest,Completedtrip,Reviews };
