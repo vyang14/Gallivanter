@@ -1,7 +1,13 @@
-const router = require('express').Router();
-const { Completedtrip, Reviews, UserRequest, Users, User } = require('../models');
-const withAuth = require('../utils/auth');
-const { get } = require('./api');
+const router = require("express").Router();
+const {
+  Completedtrip,
+  Reviews,
+  UserRequest,
+  Users,
+  User,
+} = require("../models");
+const withAuth = require("../utils/auth");
+const { get } = require("./api");
 
 router.get('/', async (req, res) => {
     try {
@@ -17,21 +23,21 @@ router.get('/', async (req, res) => {
 });
 
 //Login route
-router.get('/login', async (req, res) => {
+router.get("/login", async (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+  res.render("login");
+});
+
+//Create a Trip Route
+router.get('/newTrip', async (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/');
         return;
     }
-    res.render('login');
+    res.render('newTrip');
 });
-
-//Create a Trip Route
-// router.get('/newTrip', async (req, res) => {
-//     if (req.session.loggedIn) {
-//         res.redirect('/');
-//         return;
-//     }
-//     res.render('trip');
-// });
 
 module.exports = router;

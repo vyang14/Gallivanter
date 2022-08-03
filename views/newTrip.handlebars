@@ -1,0 +1,52 @@
+<div class="row searchParam">
+    <form class="col s8 searchForm">
+        <div class="row">
+            <div class="input-field">
+            <textarea id="leavingFrom" class="materialze-textarea"></textarea>
+            <label for="leavingFrom">Where are you leaving from?</Label>
+            <input type="text" class="datepicker" id="dateLeave" placeholder="Pick your leaving date.">
+            {{!-- <div class="" id="dateLeave"d></div> --}}
+            <button
+                class="col s2 btn waves-effect waves-light"
+                type="button"
+                name="swap"
+            > {{!-- swap destinations in text areas --}}
+            <i class="material-icons right">autorenew</i>
+            </div>
+
+         <div class="input-field"></div>
+            <textarea id="goingTo" class="materialze-textarea"></textarea>
+            <label for="goingTo">Where are you going?</Label>
+            <input type="text" class="datepicker" id="dateReturn" placeholder="Pick your return date.">
+            {{!-- <div class="" id="dateReturn"d></div> --}}
+            <button
+                class="btn waves-effect waves-light"
+                type="submit"
+                name="search"
+            >
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+        
+        </div>
+        <h2>How are we getting you there?</h2>
+        <div class="dropdown">
+            <button class="dropbtn">Choose one:</button>
+            <div class="dropdown-content">
+                <a href="#">Flying</a>
+                <a href="#">Driving</a>
+                <a href="#">Rideshare</a>
+                <a href="#">Public Transport</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="row" id="gMap"></div>
+<seciton class="row searchResults">
+    <div>
+
+    </div>
+</seciton>
+
+<script src="/js/newTrip.js"></script>

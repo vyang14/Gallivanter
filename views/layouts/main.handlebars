@@ -1,138 +1,123 @@
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gallivanter</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/css/style.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallivanter</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
 
-  <body>
-    <header>
-      <div class="navbar-fixed blue-grey lighten-4">
-        <nav>
-          <div class="nav-wrapper">
-            <a href="/" class="brand-logo"><img
-                src="images/logo.png"
-                height="30"
-                width="30"
-                type="image/png"
-                alt="Logo"
-              />
-              Gallivanter</a>
-            <ul
-              id="nav-mobile"
-              class="right hide-on-med-and-down blue-grey-text text-darken-4"
-            >
-              <li>
-                {{#if loggedIn}}
-                  <a id="logout">Logout</a>
-                {{else}}
-                  <a href="/login">Login</a>
-                {{/if}}
-              </li>
-              <li><a href="#">NEW Trip</a></li>
-              <li><a href="#">My Trips</a></li>
-              <li><a href="#">Random Trip Generator</a></li>
-              <li><a href="#contact">Contact Us</a></li>
-            </ul>
-          </div>
-        </nav>
+<body>
+  <header>
+
+    {{! logo and title display }}
+    <div class="navbar-fixed">
+      <nav class="cyan">
+        <div class="nav-wrapper">
+          <a href="/" class="brand-logo indigo-text"><img src="images/logo.png" height="30" width="30" type="image/png"
+              alt="Logo" />
+            Gallivanter</a>
+
+          {{! Full Nav }}
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>
+              {{#if loggedIn}}
+              <a id="logout">Logout</a>
+              {{else}}
+              <a href="/login">Login</a>
+              {{/if}}
+            </li>
+            <li><a href="/newTrip">NEW Trip</a></li>
+            <li><a href="/tripData">My Trips</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      {{! Dropdown Nav }}
+      <ul class="sidenav" id="mobile-demo">
+        <li>
+              {{#if loggedIn}}
+              <a id="logout">Logout</a>
+              {{else}}
+              <a href="/login">Login</a>
+              {{/if}}
+            </li>
+        <li><a href="/newTripForm">NEW Trip</a></li>
+        <li><a href="/tripData">My Trips</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="row">
+
+    <div class="col s12" id="top">
+      {{{body}}}
+    </div>
+
+  </main>
+
+  <footer class="page-footer cyan indigo-text">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5><img src="images/logo.png" height="50" width="50" type="image/png" alt="Gallivantor Logo">
+            Gallivanter Travels</h5>
+          <p>Not all who wander, are lost.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 id="contact">Contact Us</h5>
+          <ul>
+            <li><a href="https://github.com/TeagrinForde">
+                <div class="chip">
+                  <img src="/images/Profile TF.jpg" alt="Teagrin Forde" />
+                  Teagrin Forde
+                </div>
+              </a></li>
+            <li><a href="https://github.com/vyang14">
+                <div class="chip">
+                  <img src="/images/Profile VY.PNG" alt="Vince Yang" />
+                  Vince Yang
+                </div>
+              </a></li>
+            <li><a href="https://github.com/fairiberry">
+                <div class="chip">
+                  <img src="/images/Profile FS.PNG" alt="Farrah Syed" />
+                  Farrah Syed
+                </div>
+              </a></li>
+            <li><a href="https://github.com/Groceat">
+                <div class="chip">
+                  <img src="/images/Profile CW.PNG" alt="Charles Wright" />
+                  Charles Wright
+                </div>
+              </a></li>
+          </ul>
+        </div>
       </div>
-    </header>
-
-    <main>
-
-      <div class="container amber blue-grey-text text-darken-4" id="top">
-        {{{body}}}
-      </div>
-
-    </main>
-
-    <footer class="page-footer">
+    </div>
+    <div class="footer-copyright">
       <div class="container">
-        <div class="row blue-grey lighten-4">
-          <div class="col l6 s12">
-            <h5 class="blue-grey-text text-darken-4"><img
-                src="images/logo.png"
-                height="50"
-                width="50"
-                type="image/png"
-                alt="Gallivantor Logo"
-              />
-              Gallivanter Travels</h5>
-            <p class="blue-grey-text text-darken-3">Not all who wander, are
-              lost.
-            </p>
-          </div>
-          <div class="col l4 offset-l2 s12">
-            <h5 class="blue-grey-text text-darken-4" id="contact">Contact Us</h5>
-            <ul>
-              <li><a
-                  class="blue-grey-text text-darken-3"
-                  href="https://github.com/TeagrinForde"
-                >
-                  <div class="chip">
-                    <img
-                      src="/images/Profile TF.jpg"
-                      alt="Teagrin Forde"
-                    />
-                    Teagrin Forde
-                  </div>
-                </a></li>
-              <li><a
-                  class="blue-grey-text text-darken-3"
-                  href="https://github.com/vyang14"
-                ><div class="chip">
-                    <img
-                      src="/images/Profile VY.PNG"
-                      alt="Vince Yang"
-                    />
-                    Vince Yang
-                  </div></a></li>
-              <li><a
-                  class="blue-grey-text text-darken-3"
-                  href="https://github.com/fairiberry"
-                ><div class="chip">
-                    <img
-                      src="/images/Profile FS.PNG"
-                      alt="Farrah Syed"
-                    />
-                    Farrah Syed
-                  </div></a></li>
-              <li><a
-                  class="blue-grey-text text-darken-3"
-                  href="https://github.com/Groceat"
-                ><div class="chip">
-                    <img
-                      src="/images/Profile VY.PNG"
-                      alt="Charles Wright"
-                    />
-                    Charles Wright
-                  </div></a></li>
-            </ul>
-          </div>
-        </div>
+        © 2022 Gallivanter
+        <a class="right" href="#top">Back to top</a>
       </div>
-      <div class="footer-copyright">
-        <div class="container">
-          © 2022 Gallivanter
-          <a class="blue-grey-text text-darken-4 right" href="#top">Back to top</a>
-        </div>
-      </div>
-    </footer>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
-    ></script>
-  </body>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.sidenav'); 
+    var instances = M.AutoInit();
+  });
+  </script>
+</body>
 
 </html>
