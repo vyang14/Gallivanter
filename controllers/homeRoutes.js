@@ -24,12 +24,12 @@ router.get("/login", async (req, res) => {
 });
 
 //Create a Trip Route
-// router.get('/newTrip', async (req, res) => {
-//     if (req.session.loggedIn) {
-//         res.redirect('/');
-//         return;
-//     }
-//     res.render('trip');
-// });
+router.get('/newTrip', async (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+    res.render('newTrip');
+});
 
 module.exports = router;
