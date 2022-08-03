@@ -1,10 +1,10 @@
-<section class="row searchParam">
+<div class="row searchParam">
     <form class="col s8 searchForm">
         <div class="row">
-            <div class="input-field col s8">
+            <div class="input-field">
             <textarea id="leavingFrom" class="materialze-textarea"></textarea>
             <label for="leavingFrom">Where are you leaving from?</Label>
-            <input type="text" class="datepicker" id="dateLeave">
+            <input type="text" class="datepicker" id="dateLeave" placeholder="Pick your leaving date.">
             {{!-- <div class="" id="dateLeave"d></div> --}}
             <button
                 class="col s2 btn waves-effect waves-light"
@@ -14,10 +14,10 @@
             <i class="material-icons right">autorenew</i>
             </div>
 
-         <div class="input-field col s8"></div>
+         <div class="input-field"></div>
             <textarea id="goingTo" class="materialze-textarea"></textarea>
             <label for="goingTo">Where are you going?</Label>
-            <input type="text" class="datepicker" id="dateReturn">
+            <input type="text" class="datepicker" id="dateReturn" placeholder="Pick your return date.">
             {{!-- <div class="" id="dateReturn"d></div> --}}
             <button
                 class="btn waves-effect waves-light"
@@ -40,9 +40,9 @@
             </div>
         </div>
     </form>
-</section>
+</div>
 
-<section class="row" id="gMap"></section>
+<div class="row" id="gMap"></div>
 <seciton class="row searchResults">
     <div>
 
