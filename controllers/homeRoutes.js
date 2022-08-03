@@ -3,7 +3,6 @@ const { Completedtrip, Reviews, UserRequest, Users, User } = require('../models'
 const withAuth = require('../utils/auth');
 const { get } = require('./api');
 
-//Display Carousel
 router.get('/', async (req, res) => {
     try {
         const userData = await User.findAll();
@@ -11,9 +10,7 @@ router.get('/', async (req, res) => {
           const users = userData.map((user) => user.get({ plain: true }));
           console.log(users)
         res.render('homepage',
-           users
-
-        )
+           users )
     } catch (err) {
         res.status(500).json(err);
     }
