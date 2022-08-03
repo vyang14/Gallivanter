@@ -1,0 +1,28 @@
+[
+    {
+        "numpassenger": 1, 
+        "EndingLoc": "Rhode island",
+        "StartingLoc": "Maine",
+        "TransportMethod": "Plane",
+        "user_id": 1
+    },
+    {
+        "numpassenger": 1, 
+        "EndingLoc": "Rhode island3",
+        "StartingLoc": "Maine",
+        "TransportMethod": "Plane",
+        "user_id": 3
+    },{
+        "numpassenger": 1, 
+        "EndingLoc": "Rhode island2",
+        "StartingLoc": "Maine",
+        "TransportMethod": "Plane",
+        "user_id": 2
+    },{
+        "numpassenger": 1, 
+        "EndingLoc": "Rhode island4",
+        "StartingLoc": "Maine",
+        "TransportMethod": "Plane",
+        "user_id": 4
+    }
+]

@@ -4,9 +4,16 @@ const withAuth = require('../utils/auth');
 const { get } = require('./api');
 
 //Display Carousel
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
     try {
-        res.render("homepage")
+        const userData = await User.findAll();
+        console.log(userData);
+          const users = userData.map((user) => user.get({ plain: true }));
+          console.log(users)
+        res.render('homepage',
+           users
+
+        )
     } catch (err) {
         res.status(500).json(err);
     }
