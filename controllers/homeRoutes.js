@@ -4,7 +4,7 @@ const withAuth = require('../utils/auth');
 const { get } = require('./api');
 
 //Display Carousel
-router.get('/carousel', (req, res) => {
+router.get('/', (req, res) => {
     try {
         res.render("homepage")
     } catch (err) {
