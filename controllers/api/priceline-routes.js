@@ -2,11 +2,12 @@ const router = require('express').Router();
 // Include the Book model with the other imports
 const { User, UserRequest,Completedtrip,Reviews } = require('../../models');
 
-// GET all users
+// GET all readers
 router.get('/', async (req, res) => {
   try {
-    const userData = await User.findAll({
-      include: [{ model: Users }],
+    const userreqData = await UserRequest.findAll({
+      // Add Book as a second model to JOIN with
+      include: [{ model:UserRequest }, { model: User }],
     });
     res.status(200).json(userData);
   } catch (err) {
@@ -14,17 +15,20 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET a single user
+// GET a single reader
 router.get('/:id', async (req, res) => {
   try {
-    const userData = await Reader.findByPk(req.params.id, {
-      include: [{ model: User }],
+    const userreqData = await UserRequest.findByPk(req.params.id, {
+      // Add Book as a second model to JOIN with
+      include: [{ model:UserRequest }, { model: User }],
     });
-    if (!userData) {
+
+    if (!userreqData) {
       res.status(404).json({ message: 'No user found with that id!' });
       return;
     }
-    res.status(200).json(userData);
+
+    res.status(200).json(userreqData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -33,8 +37,8 @@ router.get('/:id', async (req, res) => {
 // CREATE a reader
 router.post('/', async (req, res) => {
   try {
-    const userData = await Reader.create(req.body);
-    res.status(200).json(userData);
+    const userreqData = await UserRequest.create(req.body);
+    res.status(200).json(userreqData);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -43,18 +47,18 @@ router.post('/', async (req, res) => {
 // DELETE a reader
 router.delete('/:id', async (req, res) => {
   try {
-    const userData = await User.destroy({
+    const userreqData = await UserRequest.destroy({
       where: {
         id: req.params.id,
       },
     });
 
-    if (!userData) {
+    if (!userreqData) {
       res.status(404).json({ message: 'No user found with that id!' });
       return;
     }
 
-    res.status(200).json(userData);
+    res.status(200).json(userreqData);
   } catch (err) {
     res.status(500).json(err);
   }
