@@ -53,7 +53,56 @@
 <div class="row" id="gMap"></div>
 <div class="row searchResults">
     <div>
+=======
+<div class="row s12 searchParam">
+    <form class="searchForm">
+        <div class="col s8">
+            <div class="input-field col s6">
+                <textarea id="leavingForm" class="materialize-textarea"></textarea>
+                <label for="leavingForm">Where are you departing from?</label>
+            </div>
+            <div class="col s6">
+                <input type="text" class="datepicker" id="dateLeave" placeholder="Pick your departure date.">
+                {{!-- <div class="" id="dateLeave" d></div> --}}
+            </div>
 
+            <div class="row">
+                <button class="btn waves-effect waves-light" type="button" name="swap">
+                    {{!-- swap destinations in text areas --}}
+                    <i class="material-icons">autorenew</i>
+            </div>
+
+            <div class="input-field col s6">
+                <textarea id="goingTo" class="materialize-textarea"></textarea>
+                <label for="goingTo">Where is your destination?</label>
+            </div>
+
+            <div class="col s6">
+                <input type="text" class="datepicker" id="dateReturn" placeholder="Pick your return date.">
+                {{!-- <div class="" id="dateReturn" d></div> --}}
+            </div>
+        </div>
+
+        <div class="col s3 transportation">
+            <h4>How do you want to get there?</h4>
+            <div class="dropdown">
+                <button class="dropbtn">Choose one:</button>
+                <div class="dropdown-content">
+                    <a href="#">Flying</a>
+                    <a href="#">Driving</a>
+                    <a href="#">Rideshare</a>
+                    <a href="#">Public Transport</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="row" id="gMap">
+    <div class="row searchResults">
+        <div>
+
+        </div>
     </div>
 </div>
 
