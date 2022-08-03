@@ -3,17 +3,13 @@ const { Completedtrip, Reviews, UserRequest, Users, User } = require('../models'
 const withAuth = require('../utils/auth');
 const { get } = require('./api');
 
-
-router.get('/', async (req, res) => {
-    const userData = await User.findAll({
-        include: [{ model: UserRequest}]        
-    });
-
-    const users = userData.map((trip) => trip.get({ plain: true }));
-    res.render('homepage', {
-        users,
-        loggedIn: req.session.loggedIn,
-    });
+//Display Carousel
+router.get('/carousel', (req, res) => {
+    try {
+        res.render("homepage")
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 //Login route
@@ -26,12 +22,12 @@ router.get('/login', async (req, res) => {
 });
 
 //Create a Trip Route
-router.get('/homepage', async (req, res) => {
-    if (req.session.loggedIn) {
-        res.redirect('/');
-        return;
-    }
-    res.render('trip');
-});
+// router.get('/newTrip', async (req, res) => {
+//     if (req.session.loggedIn) {
+//         res.redirect('/');
+//         return;
+//     }
+//     res.render('trip');
+// });
 
 module.exports = router;
