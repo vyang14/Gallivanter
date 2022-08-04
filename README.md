@@ -3,7 +3,7 @@
 
   ## Description
 
-  Gallivanter is an application that gives the user access to all the necessary travel information to know before taking a trip. Based on the traveler's destination and/or date of travel the following information will be displayed: weather, transportation options (plane, train, or automobile) with average pricing, hotels, car rentals, transportation, things to do, and packing checklist. 
+  Gallivanter is an application that provides necessary travel information a user may need before planning a trip. Based on the traveler's destination and/or date of travel, the following information will be displayed: weather, transportation options (plane, train, or automobile) with average pricing, hotels, car rentals, transportation, things to do, and packing checklist. 
   
   ![image](https://user-images.githubusercontent.com/101753839/182929791-806f9b86-1266-45f9-9a11-7bd14c7d80ef.png)
   
