@@ -13,7 +13,7 @@ CompletedTrip.init(
       autoIncrement: true,
     },
     Price: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     Locations: {

@@ -1,5 +1,9 @@
 const router = require('express').Router();
-// Include the Book model with the other imports
+
+const express = require('express');
+const path = require('path');
+const axios = require("axios");
+const app = express();
 const { User, UserRequest,Completedtrip,Reviews } = require('../../models');
 
 // GET all readers
@@ -34,8 +38,10 @@ router.get('/:id', async (req, res) => {
 // CREATE a reader
 router.post('/', async (req, res) => {
   try {
+    console.log(req.body);
+  JSON.stringify(req.body)
+  console.log(req.body);
     const userreqData = await UserRequest.create(req.body);
-    console.log(userreqData);
     res.status(200).json(userreqData);
   } catch (err) {
     res.status(400).json("yes?");

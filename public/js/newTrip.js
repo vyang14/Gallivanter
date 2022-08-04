@@ -151,6 +151,36 @@ swapButton.addEventListener('click',function(){
     destination.value = input1;
     var departDate = document.getElementById('dateLeave').value;
     var arriveDate = document.getElementById('dateReturn').value;
+
 })
             
+const newTripFormhandler = async (event) => {
+    event.preventDefault();
+  
+    var depart = document.getElementById('departForm');
+    var destination = document.getElementById('goingTo');
+    var input1 = document.getElementById('departForm').value;
+    var input2 = document.getElementById('goingTo').value;
+    depart.value = input2;
+    destination.value = input1;
+    var departDate = document.getElementById('dateLeave').value;
+    var arriveDate = document.getElementById('dateReturn').value;
+    method= "AIRPORT"
+    if (depart,destination,departDate,arriveDate) {
+      const response = await fetch('/api/users', {
+        method: 'POST',
+        body: JSON.stringify({ depart,destination,departDate,arriveDate,method}),
+        headers: { 'Content-Type': 'application/json' },
+      });
+  
+      if (response.ok) {
+       console.log("YES")
+      } else {
+        alert(response.statusText);
+      }
+    }
+  };
+
+  swapButton
+  .addEventListener('click', newTripFormhandler);
 // window.initMap = initMap;
