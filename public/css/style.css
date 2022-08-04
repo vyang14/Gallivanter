@@ -17,3 +17,7 @@ input::placeholder{
     margin-left: -100%;
     margin-top: -40%;
 }
+
+.dropNav #mobile-demo .user-view .background #backgroundPOP {
+    width: 100%;
+}
