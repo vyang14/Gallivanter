@@ -1,19 +1,23 @@
+var swapButton = document.getElementById('swap');
+var dropButton = document.getElementById('dropBtn');
+var btnTrue = 0;
+
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.datepicker');
-    var instances = M.Datepicker.init(elems, options);
+    var instances = M.Datepicker.init(elems, {format: 'mm-dd-yyyy'});
 });
 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems, options);
+    var instances = M.Dropdown.init(elems, {});
 });
 
-function initMap() {
-    map = new google.maps.Map(document.getElementById("gMap"), {
-        center: { lat: 33.978951, lng: -84.21398 },
-        zoom: 13,
-    });
-}
+// function initMap() {
+//     map = new google.maps.Map(document.getElementById("map"), {
+//         center: { lat: 33.978951, lng: -84.21398 },
+//         zoom: 13,
+//     });
+// }
 
 // const card = document.getElementById("pac-card");
 //   const input = document.getElementsByClassName("pac-input");
@@ -112,7 +116,39 @@ function initMap() {
 //     input.value = "";
 //   });
 
-// window.initMap = initMap;
 // export {};
+
+for(var i = 0; i < 4; i++){
+    let iteration = 'a'+i;
+    let iteration2 = 'b'+i;
+    var listEl = document.getElementById(iteration);
+    var listElText = document.getElementById(iteration2);
+
+    listEl.addEventListener('click', function(){
+    dropButton.textContent = listElText.value;
+    
+    if (btnTrue = 0){
+        btnTrue++;
+        var tType = document.querySelector('#travelType');
+        var goBtn = document.createElement('button');
+        goBtn.classList.add('btn', 'waves-effect', 'waves-light');
+        goBtn.textContent = '<i class="material-icons">send</i>';
+        goBtn.addEventListener('click', startSearch());
+        tType.appendChild(goBtn);
+    }
+    
+    })
+}
+
+swapButton.addEventListener('click',function(){
+    var depart = document.getElementById('departForm');
+    var destination = document.getElementById('goingTo');
+    var input1 = document.getElementById('departForm').value;
+    var input2 = document.getElementById('goingTo').value;
+    depart.value = input2;
+    destination.value = input1;
+    var departDate = document.getElementById('dateLeave').value;
+    var arriveDate = document.getElementById('dateReturn').value;
+})
             
-window.initMap = initMap;
+// window.initMap = initMap;
