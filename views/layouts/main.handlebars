@@ -40,18 +40,35 @@
       </nav>
 
       {{! Dropdown Nav }}
-      <ul class="sidenav" id="mobile-demo">
+      <ul id="mobile-demo" class="sidenav">
         <li>
-              {{#if loggedIn}}
-              <a id="logout">Logout</a>
-              {{else}}
-              <a href="/login">Login</a>
-              {{/if}}
-            </li>
-        <li><a href="/newTripForm">NEW Trip</a></li>
-        <li><a href="/tripData">My Trips</a></li>
-        <li><a href="#contact">Contact Us</a></li>
+          <div class="user-view">
+            <div class="background">
+              <img src="http://www.accurateglobalreach.com/wp-content/uploads/2019/07/Travel.jpg" alt="travel">
+            </div>
+            <a href="#logo"><img class="circle" src="/images/logo.png" /></a>
+            <a href="#gallivanter"><span class="white-text name">Gallivanter</span></a>
+            <a href="#description"><span class="white-text email"></span></a>
+          </div>
+        </li>
+        <li><a class="waves-effect" href="/login"><i class="material-icons">thumb_up</i>Login</a></li>
+
+        <li>
+          <div class="divider"></div>
+        </li>
+        <li><a class="waves-effect" href="/newTrip">NEW Trip</a></li>
+
+        <li>
+          <div class="divider"></div>
+        </li>
+        <li><a class="waves-effect" href="/tripData">My Trips</a></li>
+
+        <li>
+          <div class="divider"></div>
+        </li>
+        <li><a class="waves-effect" href="#contact">Contact Us</a></li>
       </ul>
+      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
   </header>
 
@@ -67,7 +84,7 @@
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5><img src="images/logo.png" height="50" width="50" type="image/png" alt="Gallivantor Logo">
+          <h5><img src="images/logo.png" height="50" width="50" type="image/png" alt="Gallivantor Logo" />
             Gallivanter Travels</h5>
           <p>Not all who wander, are lost.</p>
         </div>
@@ -105,20 +122,28 @@
     <div class="footer-copyright">
       <div class="container">
         © 2022 Gallivanter
-        <a class="right" href="#top">Back to top</a>
+        <a class="right indigo-text" href="#top">Back to top</a>
       </div>
     </div>
   </footer>
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAigt9WzHgkJnidN6iEN2Uq0KMSEo8lef0&callback=initMap&v=weekly" defer></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAigt9WzHgkJnidN6iEN2Uq0KMSEo8lef0&libraries=places"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAigt9WzHgkJnidN6iEN2Uq0KMSEo8lef0&callback=initMap&v=weekly"
+    defer></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAigt9WzHgkJnidN6iEN2Uq0KMSEo8lef0&libraries=places"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.sidenav'); 
-    var instances = M.AutoInit();
-  });
+    $(document).ready(function () {
+      $('.sidenav').sidenav();
+    });
+    
+    $(document).ready(function () {
+      $('.carousel').carousel();
+    });
+
+    $(".button-collapse").sideNav();
   </script>
 </body>
 
