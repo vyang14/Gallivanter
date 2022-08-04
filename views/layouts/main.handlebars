@@ -16,6 +16,7 @@
 
     {{! logo and title display }}
     <div class="navbar-fixed">
+
       <nav class="cyan">
         <div class="nav-wrapper">
           <a href="/" class="brand-logo indigo-text"><img src="images/logo.png" height="30" width="30" type="image/png"
@@ -24,7 +25,7 @@
 
           {{! Full Nav }}
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <ul class="right hide-on-med-and-down">
             <li>
               {{#if loggedIn}}
               <a id="logout">Logout</a>
@@ -39,23 +40,40 @@
         </div>
       </nav>
 
-      {{! Dropdown Nav }}
-      <ul class="sidenav" id="mobile-demo">
-        <li>
-              {{#if loggedIn}}
-              <a id="logout">Logout</a>
-              {{else}}
-              <a href="/login">Login</a>
-              {{/if}}
-            </li>
-        <li><a href="/newTripForm">NEW Trip</a></li>
-        <li><a href="/tripData">My Trips</a></li>
-        <li><a href="#contact">Contact Us</a></li>
-      </ul>
+
     </div>
   </header>
 
-  <main class="row">
+  <main class="row dropNav">
+          {{! Dropdown Nav }}
+      <ul id="mobile-demo" class="sidenav indigo">
+        <li>
+          <div class="user-view">
+            <div class="background">
+              <img src="/images/bg.PNG" alt="travel" type="image/png" id="backgroundPOP">
+            </div>
+            <a href="#logo"><img class="circle" src="/images/logo.png" /></a>
+            <a href="#gallivanter"><span class="indigo-text name">Gallivanter</span></a>
+            
+          </div>
+        </li>
+        <li><a class="waves-effect white-text" href="/login"><i class="material-icons">thumb_up</i>Login</a></li>
+
+        <li>
+          <div class="divider"></div>
+        </li>
+        <li><a class="waves-effect white-text" href="/newTrip"><i class="material-icons">airplanemode_active</i>NEW Trip</a></li>
+
+        <li>
+          <div class="divider"></div>
+        </li>
+        <li><a class="waves-effect white-text" href="/tripData"><i class="material-icons">event</i>My Trips</a></li>
+
+        <li>
+          <div class="divider"></div>
+        </li>
+        <li><a class="waves-effect white-text" href="#contact"><i class="material-icons">contacts</i>Contact Us</a></li>
+      </ul>
 
     <div class="col s12" id="top">
       {{{body}}}
@@ -67,7 +85,7 @@
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5><img src="images/logo.png" height="50" width="50" type="image/png" alt="Gallivantor Logo">
+          <h5><img src="images/logo.png" height="50" width="50" type="image/png" alt="Gallivantor Logo" />
             Gallivanter Travels</h5>
           <p>Not all who wander, are lost.</p>
         </div>
@@ -105,7 +123,7 @@
     <div class="footer-copyright">
       <div class="container">
         © 2022 Gallivanter
-        <a class="right" href="#top">Back to top</a>
+        <a class="right indigo-text" href="#top">Back to top</a>
       </div>
     </div>
   </footer>
@@ -114,10 +132,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.sidenav'); 
-    var instances = M.AutoInit();
-  });
+    $(document).ready(function () {
+      $('.sidenav').sidenav();
+    });
+    
+    $(document).ready(function () {
+      $('.carousel').carousel();
+    });
   </script>
 </body>
 
