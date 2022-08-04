@@ -1,25 +1,23 @@
+const { all } = require("../../controllers/api");
 
 var swapButton = document.getElementById('swap');
 var dropButton = document.getElementById('dropBtn');
-var btnTrue = 0;
-
+var allBtns = document.getElementsByName('userBtn');
 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.datepicker');
-    var instances = M.Datepicker.init(elems, {format: 'mm-dd-yyyy'});
+    var instances = M.Datepicker.init(elems, {
+        format: 'mm-dd-yyyy',
+        minDate: new Date(),
+        firstDay: 0,
 });
+})
 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.dropdown-trigger');
     var instances = M.Dropdown.init(elems, {});
 });
 
-// function initMap() {
-//     map = new google.maps.Map(document.getElementById("map"), {
-//         center: { lat: 33.978951, lng: -84.21398 },
-//         zoom: 13,
-//     });
-// }
 
 // const card = document.getElementById("pac-card");
 //   const input = document.getElementsByClassName("pac-input");
@@ -120,25 +118,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // export {};
 
-for(var i = 0; i < 4; i++){
+for(var i = 0; i < 3; i++){
     let iteration = 'a'+i;
-    let iteration2 = 'b'+i;
     var listEl = document.getElementById(iteration);
-    var listElText = document.getElementById(iteration2);
 
     listEl.addEventListener('click', function(){
-    dropButton.textContent = listElText.value;
-    
-    if (btnTrue = 0){
-        btnTrue++;
-        var tType = document.querySelector('#travelType');
-        var goBtn = document.createElement('button');
-        goBtn.classList.add('btn', 'waves-effect', 'waves-light');
-        goBtn.textContent = '<i class="material-icons">send</i>';
-        goBtn.addEventListener('click', startSearch());
-        tType.appendChild(goBtn);
-    }
-    
+        dropButton.textContent = this.lastChild.lastChild.textContent;
+        allBtns.forEach(allBtns => allBtns.disabled=true);
+        const userInput = {
+            depart: document.getElementById('departForm').value,
+            destination: document.getElementById('goingTo').value,
+            departDate: document.getElementById('dateLeave').value,
+            arriveDate: document.getElementById('dateReturn').value,
+            travelType: dropButton.textContent
+        }
+        
+        module.exports = userInput;
     })
 }
 
