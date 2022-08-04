@@ -21,3 +21,8 @@ input::placeholder{
 #mobile-demo .user-view .background #backgroundPOP {
     height: 100%;
 }
+
+#gMap {
+    min-height: 500px;
+    max-height: fit-content;
+}
