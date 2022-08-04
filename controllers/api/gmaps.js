@@ -1,4 +1,5 @@
 const router = require('express').Router();
+
 let map;
 
 //fetching first 5 results from the Yelp API using a given lat/long

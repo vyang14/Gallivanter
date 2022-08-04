@@ -1,7 +1,8 @@
+const { all } = require("../../controllers/api");
+
 var swapButton = document.getElementById('swap');
 var dropButton = document.getElementById('dropBtn');
-var btnTrue = 0;
-
+var allBtns = document.getElementsByName('userBtn');
 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.datepicker');
@@ -12,19 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 })
 
-
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.dropdown-trigger');
     var instances = M.Dropdown.init(elems, {});
 });
 
-
-// function initMap() {
-//     map = new google.maps.Map(document.getElementById("map"), {
-//         center: { lat: 33.978951, lng: -84.21398 },
-//         zoom: 13,
-//     });
-// }
 
 // const card = document.getElementById("pac-card");
 //   const input = document.getElementsByClassName("pac-input");
@@ -125,29 +118,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // export {};
 
-// function travelType(event){
-//     debugger; 
-//     dropButton.textContent = listElText.textContent;
-//     startSearch
-// }
-
-for(var i = 0; i < 4; i++){
+for(var i = 0; i < 3; i++){
     let iteration = 'a'+i;
     var listEl = document.getElementById(iteration);
 
     listEl.addEventListener('click', function(){
         dropButton.textContent = this.lastChild.lastChild.textContent;
-    
-    // if (btnTrue = 0){
-    //     btnTrue++;
-    //     var tType = document.querySelector('#travelType');
-    //     var goBtn = document.createElement('button');
-    //     goBtn.classList.add('btn', 'waves-effect', 'waves-light');
-    //     goBtn.textContent = '<i class="material-icons">send</i>';
-    //     goBtn.addEventListener('click', startSearch());
-    //     tType.appendChild(goBtn);
-    // }
-    
+        allBtns.forEach(allBtns => allBtns.disabled=true);
+        const userInput = {
+            depart: document.getElementById('departForm').value,
+            destination: document.getElementById('goingTo').value,
+            departDate: document.getElementById('dateLeave').value,
+            arriveDate: document.getElementById('dateReturn').value,
+            travelType: dropButton.textContent
+        }
+        
+        module.exports = userInput;
     })
 }
 
@@ -161,5 +147,4 @@ swapButton.addEventListener('click',function(){
     var departDate = document.getElementById('dateLeave').value;
     var arriveDate = document.getElementById('dateReturn').value;
 })
-            
-// window.initMap = initMap;
+
