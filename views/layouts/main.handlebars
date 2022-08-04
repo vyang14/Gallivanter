@@ -40,40 +40,40 @@
         </div>
       </nav>
 
-      {{! Dropdown Nav }}
-      <ul id="mobile-demo" class="sidenav">
-        <li>
-          <div class="user-view">
-            <div class="background">
-              <img src="http://www.accurateglobalreach.com/wp-content/uploads/2019/07/Travel.jpg" alt="travel">
-            </div>
-            <a href="#logo"><img class="circle" src="/images/logo.png" /></a>
-            <a href="#gallivanter"><span class="white-text name">Gallivanter</span></a>
-            <a href="#description"><span class="white-text email"></span></a>
-          </div>
-        </li>
-        <li><a class="waves-effect" href="/login"><i class="material-icons">thumb_up</i>Login</a></li>
 
-        <li>
-          <div class="divider"></div>
-        </li>
-        <li><a class="waves-effect" href="/newTrip">NEW Trip</a></li>
-
-        <li>
-          <div class="divider"></div>
-        </li>
-        <li><a class="waves-effect" href="/tripData">My Trips</a></li>
-
-        <li>
-          <div class="divider"></div>
-        </li>
-        <li><a class="waves-effect" href="#contact">Contact Us</a></li>
-      </ul>
-      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
   </header>
 
-  <main class="row">
+  <main class="row dropNav">
+          {{! Dropdown Nav }}
+      <ul id="mobile-demo" class="sidenav indigo">
+        <li>
+          <div class="user-view">
+            <div class="background">
+              <img src="/images/bg.PNG" alt="travel" type="image/png" id="backgroundPOP">
+            </div>
+            <a href="#logo"><img class="circle" src="/images/logo.png" /></a>
+            <a href="#gallivanter"><span class="indigo-text name">Gallivanter</span></a>
+            
+          </div>
+        </li>
+        <li><a class="waves-effect white-text" href="/login"><i class="material-icons">thumb_up</i>Login</a></li>
+
+        <li>
+          <div class="divider"></div>
+        </li>
+        <li><a class="waves-effect white-text" href="/newTrip"><i class="material-icons">airplanemode_active</i>NEW Trip</a></li>
+
+        <li>
+          <div class="divider"></div>
+        </li>
+        <li><a class="waves-effect white-text" href="/tripData"><i class="material-icons">event</i>My Trips</a></li>
+
+        <li>
+          <div class="divider"></div>
+        </li>
+        <li><a class="waves-effect white-text" href="#contact"><i class="material-icons">contacts</i>Contact Us</a></li>
+      </ul>
 
     <div class="col s12" id="top">
       {{{body}}}
@@ -143,8 +143,6 @@
     $(document).ready(function () {
       $('.carousel').carousel();
     });
-
-    $(".button-collapse").sideNav();
   </script>
 </body>
 
