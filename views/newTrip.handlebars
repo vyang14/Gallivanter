@@ -1,75 +1,22 @@
-<div class="row col s12 searchParam">
-    <form class="searchForm">
-        <div class="row">
-            <div class="input-field col s7">
-                <textarea id="leavingForm" class="materialize-textarea">ess</textarea>
-                <label for="leavingForm">Where are you departing from?</label>
-            </div>
-            <div class="input-field col s5">
-                <input type="text" class="datepicker" id="dateLeave" placeholder="Pick your departure date.">
-            </div>
-            <div class="left">
-            <button
-                class="left btn waves-effect waves-light"
-                type="button"
-                name="swap"
-            ><i class="material-icons">import_export</i>
-            </button>
-            </div>
-        </div>
-        <div class="row">
-         <div class="input-field col s7">
-            <textarea id="goingTo" class="materialize-textarea"></textarea>
-            <label for="goingTo">Where is your destination?</label>
-        </div>
-        <div class="col s5" >
-            <input type="text" class="datepicker" id="dateReturn" placeholder="Pick your return date.">
-            {{!-- <div class="" id="dateReturn"d></div> --}}
-            {{!-- <button
-                class="col btn waves-effect waves-light"
-                type="submit"
-                name="search"
-            >
-            <i class="material-icons">send</i>
-          </button> --}}
-        </div>
-    </div>
-    <div class="col">
-        <h2>How are we getting you there?</h2>
-        <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Let's go!</a>
-        <ul id='dropdown1' class='dropdown-content'>
-            <li><a id="flights"><i class="material-icons">flight_takeoff</i>Flying</a></li>
-            <li class="divider" tabindex="-1"></li>
-            <li><a id="driving"><i class="material-icons">directions_car</i>Driving</a></li>
-            <li class="divider" tabindex="-1"></li>
-            <li><a id="rideshare"><i class="material-icons">people</i>Rideshare</a></li>
-            <li class="divider" tabindex="-1"></li>
-            <li><a id="publictransport"><i class="material-icons">directions_transit</i>Public Transport</a></li>
-        </ul>
-    </div>
-    </form>
-</div>
-
-<div class="row" id="gMap"></div>
-<div class="row searchResults">
-    <div>
-=======
 <div class="row s12 searchParam">
     <form class="searchForm">
         <div class="col s8">
             <div class="input-field col s6">
-                <textarea id="leavingForm" class="materialize-textarea"></textarea>
-                <label for="leavingForm">Where are you departing from?</label>
+                <textarea id="departForm" class="materialize-textarea"></textarea>
+                <label for="departForm">Where are you departing from?</label>
             </div>
             <div class="col s6">
                 <input type="text" class="datepicker" id="dateLeave" placeholder="Pick your departure date.">
-                {{!-- <div class="" id="dateLeave" d></div> --}}
             </div>
 
-            <div class="row">
-                <button class="btn waves-effect waves-light" type="button" name="swap">
-                    {{!-- swap destinations in text areas --}}
-                    <i class="material-icons">autorenew</i>
+            <div class="col s12 left">
+            <button
+                class="left btn waves-effect waves-light"
+                id="swap"
+                type="button"
+                name="swap"
+            ><i class="material-icons">import_export</i>
+            </button>
             </div>
 
             <div class="input-field col s6">
@@ -79,26 +26,26 @@
 
             <div class="col s6">
                 <input type="text" class="datepicker" id="dateReturn" placeholder="Pick your return date.">
-                {{!-- <div class="" id="dateReturn" d></div> --}}
             </div>
         </div>
 
-        <div class="col s3 transportation">
-            <h4>How do you want to get there?</h4>
-            <div class="dropdown">
-                <button class="dropbtn">Choose one:</button>
-                <div class="dropdown-content">
-                    <a href="#">Flying</a>
-                    <a href="#">Driving</a>
-                    <a href="#">Rideshare</a>
-                    <a href="#">Public Transport</a>
-                </div>
-            </div>
-        </div>
+        <div class="col s4" id="travelType">
+        <h4>How are we getting you there?</h4>
+        <a class='dropdown-trigger btn' data-target='dropdown1' id='dropBtn'>Let's go!</a>
+        <ul id='dropdown1' class='dropdown-content'>
+            <li id="a0"><a><i class="material-icons">flight_takeoff</i><span id="b0">Flying</span></a></li>
+            <li class="divider" tabindex="-1"></li>
+            <li id="a1"><a><i class="material-icons">directions_car</i><span>Driving</span id="b1"></a></li>
+            <li class="divider" tabindex="-1"></li>
+            <li id="a2"><a><i class="material-icons">people</i><span id="b2">Rideshare</span></a></li>
+            <li class="divider" tabindex="-1"></li>
+            <li id="a3"><a><i class="material-icons">directions_transit</i><span></span id="b3">Public Transit</a></li>
+        </ul>
+    </div>
     </form>
 </div>
 
-<div class="row" id="gMap">
+<div class="row" id="map">
     <div class="row searchResults">
         <div>
 
