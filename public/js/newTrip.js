@@ -1,8 +1,9 @@
-const { all } = require("../../controllers/api");
+import * as Utils from './utils.js';
 
 var swapButton = document.getElementById('swap');
 var dropButton = document.getElementById('dropBtn');
 var allBtns = document.getElementsByName('userBtn');
+const userInput = {};
 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.datepicker');
@@ -125,15 +126,14 @@ for(var i = 0; i < 3; i++){
     listEl.addEventListener('click', function(){
         dropButton.textContent = this.lastChild.lastChild.textContent;
         allBtns.forEach(allBtns => allBtns.disabled=true);
-        const userInput = {
+        userInput = {
             depart: document.getElementById('departForm').value,
             destination: document.getElementById('goingTo').value,
             departDate: document.getElementById('dateLeave').value,
             arriveDate: document.getElementById('dateReturn').value,
             travelType: dropButton.textContent
         }
-        
-        module.exports = userInput;
+        return userInput;        
     })
 }
 
@@ -148,3 +148,4 @@ swapButton.addEventListener('click',function(){
     var arriveDate = document.getElementById('dateReturn').value;
 })
 
+export userInput;

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const gMaps = require('./gmaps');
+const gMaps = require('./utils');
 
 //fetching first 5 results from the Yelp API using a given lat/long
 /*need to:  use dotenv to hide yelp API key

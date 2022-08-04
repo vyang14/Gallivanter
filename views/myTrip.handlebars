@@ -12,5 +12,26 @@
     </div>
     
 </div>
-
+<div class="row" id="gMap">
+    <div class="col s7 searchResults" id="map">
+    </div>
+    <div class="col s5">
+        <div class="row">
+            <div>
+                <ul>
+                    <li id="depart1"></li>
+                    <li id="depart2"></li>
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <li id="return1"></li>
+                    <li id="return2"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 {{/each}}
+
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAigt9WzHgkJnidN6iEN2Uq0KMSEo8lef0&callback=initMap&v=weekly&libraries=places" defer></script>
