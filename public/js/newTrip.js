@@ -1,6 +1,8 @@
+
 var swapButton = document.getElementById('swap');
 var dropButton = document.getElementById('dropBtn');
 var btnTrue = 0;
+
 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.datepicker');
