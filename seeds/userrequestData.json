@@ -24,5 +24,12 @@
         "StartingLoc": "Maine",
         "TransportMethod": "Plane",
         "user_id": 4
+    },
+    {
+        "method":"AIRPORT",
+        "edate":"2022-11-15",
+        "sdate": "2022-11-14",
+        "sloc":"london",
+        "eloc":"atlanta"
     }
 ]
