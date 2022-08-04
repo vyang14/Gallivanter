@@ -3,7 +3,7 @@ import * as Utils from './utils.js';
 var swapButton = document.getElementById('swap');
 var dropButton = document.getElementById('dropBtn');
 var allBtns = document.getElementsByName('userBtn');
-const userInput = {};
+var userInput = {};
 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.datepicker');
@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.dropdown-trigger');
     var instances = M.Dropdown.init(elems, {});
 });
-
 
 // const card = document.getElementById("pac-card");
 //   const input = document.getElementsByClassName("pac-input");
@@ -124,28 +123,32 @@ for(var i = 0; i < 3; i++){
     var listEl = document.getElementById(iteration);
 
     listEl.addEventListener('click', function(){
+        const location = document.getElementById('departForm').value;
+        const destination = document.getElementById('goingTo').value;
+        const departDate = document.getElementById('dateLeave').value;
+        const arriveDate = document.getElementById('dateReturn').value;
+
+        if (location === undefined || destination === undefined || departDate === undefined || arriveDate === undefined ){
+            prompt('Please do not leave any forms blank!');
+            return;
+        }
+        const travelType = dropButton.textContent
         dropButton.textContent = this.lastChild.lastChild.textContent;
         allBtns.forEach(allBtns => allBtns.disabled=true);
-        userInput = {
-            depart: document.getElementById('departForm').value,
-            destination: document.getElementById('goingTo').value,
-            departDate: document.getElementById('dateLeave').value,
-            arriveDate: document.getElementById('dateReturn').value,
-            travelType: dropButton.textContent
-        }
-        return userInput;        
-    })
+        debugger;
+        return {depart, destination, departDate, arriveDate, travelType};
+        })
 }
 
 swapButton.addEventListener('click',function(){
-    var depart = document.getElementById('departForm');
-    var destination = document.getElementById('goingTo');
+    var departForm = document.getElementById('departForm');
+    var goingTo = document.getElementById('goingTo');
     var input1 = document.getElementById('departForm').value;
     var input2 = document.getElementById('goingTo').value;
-    depart.value = input2;
-    destination.value = input1;
+    departForm.value = input2;
+    goingTo.value = input1;
     var departDate = document.getElementById('dateLeave').value;
     var arriveDate = document.getElementById('dateReturn').value;
 })
 
-export userInput;
+export {location, destination, departDate, arriveDate, travelType}
