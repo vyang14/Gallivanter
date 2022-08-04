@@ -18,6 +18,6 @@ input::placeholder{
     margin-top: -40%;
 }
 
-.dropNav #mobile-demo .user-view .background #backgroundPOP {
-    width: 100%;
+#mobile-demo .user-view .background #backgroundPOP {
+    height: 100%;
 }
