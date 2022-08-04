@@ -1,0 +1,16 @@
+{{#each trips as |trip|}}
+<div class="row">
+
+    <div class="row userInput">
+        <h3 class="destination">
+            <a href="/Trip/{{Trip.id}}">Trip from {{location}} to {{destination}} on {{startDate}} - {{endDate}}.</a>
+        </h3>
+    </div>
+
+    <div class="row tripData">
+        {{trip.trip}}
+    </div>
+    
+</div>
+
+{{/each}}

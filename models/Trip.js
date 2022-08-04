@@ -2,9 +2,9 @@ const { UUIDV4, Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const User = require('./users');
 
-class CompletedTrip extends Model {}
+class Trip extends Model {}
 
-CompletedTrip.init(
+Trip.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -12,31 +12,38 @@ CompletedTrip.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    Price: {
+    price: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    Locations: {
+    location: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    Reviews: {
+    destination: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    Location: {
+    transportation: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    
+    startDate: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    endDate: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'CompletedTrip',
+    modelName: 'Trip',
   }
 );
 
-module.exports = CompletedTrip;
+module.exports = Trip;
