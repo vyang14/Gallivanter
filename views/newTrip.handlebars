@@ -2,8 +2,8 @@
     <form class="searchForm">
         <div class="col s8">
             <div class="input-field col s6">
-                <textarea id="leavingForm" class="materialize-textarea"></textarea>
-                <label for="leavingForm">Where are you departing from?</label>
+                <textarea id="departForm" class="materialize-textarea"></textarea>
+                <label for="departForm">Where are you departing from?</label>
             </div>
             <div class="col s6">
                 <input type="text" class="datepicker" id="dateLeave" placeholder="Pick your departure date.">
@@ -12,8 +12,9 @@
             <div class="col s12 left">
             <button
                 class="left btn waves-effect waves-light"
+                id="swap"
                 type="button"
-                name="swap"
+                name="userBtn"
             ><i class="material-icons">import_export</i>
             </button>
             </div>
@@ -28,28 +29,18 @@
             </div>
         </div>
 
-        <div class="col s4">
+        <div class="col s4" id="travelType">
         <h4>How are we getting you there?</h4>
-        <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Let's go!</a>
+        <a class='dropdown-trigger btn' data-target='dropdown1' name="userBtn" id='dropBtn'>Let's go!</a>
         <ul id='dropdown1' class='dropdown-content'>
-            <li><a id="flights"><i class="material-icons">flight_takeoff</i>Flying</a></li>
+            <li id="a0"><a><i class="material-icons">flight_takeoff</i><span id="b0">Flying</span></a></li>
             <li class="divider" tabindex="-1"></li>
-            <li><a id="driving"><i class="material-icons">directions_car</i>Driving</a></li>
+            <li id="a1"><a><i class="material-icons">directions_car</i><span>Driving</span id="b1"></a></li>
             <li class="divider" tabindex="-1"></li>
-            <li><a id="rideshare"><i class="material-icons">people</i>Rideshare</a></li>
-            <li class="divider" tabindex="-1"></li>
-            <li><a id="publictransport"><i class="material-icons">directions_transit</i>Public Transport</a></li>
+            <li id="a2"><a><i class="material-icons">directions_transit</i><span></span id="b2">Train</a></li>
         </ul>
     </div>
     </form>
-</div>
-
-<div class="row" id="gMap">
-    <div class="row searchResults">
-        <div>
-
-        </div>
-    </div>
 </div>
 
 <script src="/js/newTrip.js"></script>

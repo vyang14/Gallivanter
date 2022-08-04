@@ -1,19 +1,23 @@
+const { all } = require("../../controllers/api");
+
+var swapButton = document.getElementById('swap');
+var dropButton = document.getElementById('dropBtn');
+var allBtns = document.getElementsByName('userBtn');
+
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.datepicker');
-    var instances = M.Datepicker.init(elems, options);
+    var instances = M.Datepicker.init(elems, {
+        format: 'mm-dd-yyyy',
+        minDate: new Date(),
+        firstDay: 0,
 });
+})
 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems, options);
+    var instances = M.Dropdown.init(elems, {});
 });
 
-function initMap() {
-    map = new google.maps.Map(document.getElementById("gMap"), {
-        center: { lat: 33.978951, lng: -84.21398 },
-        zoom: 13,
-    });
-}
 
 // const card = document.getElementById("pac-card");
 //   const input = document.getElementsByClassName("pac-input");
@@ -112,7 +116,35 @@ function initMap() {
 //     input.value = "";
 //   });
 
-// window.initMap = initMap;
 // export {};
-            
-window.initMap = initMap;
+
+for(var i = 0; i < 3; i++){
+    let iteration = 'a'+i;
+    var listEl = document.getElementById(iteration);
+
+    listEl.addEventListener('click', function(){
+        dropButton.textContent = this.lastChild.lastChild.textContent;
+        allBtns.forEach(allBtns => allBtns.disabled=true);
+        const userInput = {
+            depart: document.getElementById('departForm').value,
+            destination: document.getElementById('goingTo').value,
+            departDate: document.getElementById('dateLeave').value,
+            arriveDate: document.getElementById('dateReturn').value,
+            travelType: dropButton.textContent
+        }
+        
+        module.exports = userInput;
+    })
+}
+
+swapButton.addEventListener('click',function(){
+    var depart = document.getElementById('departForm');
+    var destination = document.getElementById('goingTo');
+    var input1 = document.getElementById('departForm').value;
+    var input2 = document.getElementById('goingTo').value;
+    depart.value = input2;
+    destination.value = input1;
+    var departDate = document.getElementById('dateLeave').value;
+    var arriveDate = document.getElementById('dateReturn').value;
+})
+

@@ -4,6 +4,10 @@
   ## Description
 
   Gallivanter is an application that gives the user access to all the necessary travel information to know before taking a trip. Based on the traveler's destination and/or date of travel the following information will be displayed: weather, transportation options (plane, train, or automobile) with average pricing, hotels, car rentals, transportation, things to do, and packing checklist. 
+  
+  ![image](https://user-images.githubusercontent.com/101753839/182929791-806f9b86-1266-45f9-9a11-7bd14c7d80ef.png)
+  
+  ![image](https://user-images.githubusercontent.com/101753839/182929940-d04feb91-679f-4926-afc7-a7f8af027a4f.png)
 
 
   ## Table of Contents
@@ -16,7 +20,9 @@
 
   ## Usage
 
-  This website has been deployed through Heroku and can be accessed in the link:
+  This website has been deployed through GitHub and Heroku and can be accessed in the links:
+  Heroku: 
+  GitHub: https://teagrinforde.github.io/Gallivanter/   
 
   ## Contribution Guidelines
 
