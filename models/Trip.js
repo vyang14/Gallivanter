@@ -1,6 +1,5 @@
 const { UUIDV4, Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const User = require('./users');
 
 class Trip extends Model {}
 
@@ -35,6 +34,13 @@ Trip.init(
     endDate: {
       type: DataTypes.DATE,
       allowNull: false,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
     },
   },
   {
