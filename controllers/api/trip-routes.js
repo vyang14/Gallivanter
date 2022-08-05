@@ -22,7 +22,7 @@ var eloc = req.body.destination
 var sdate = req.body.startDate
 var edate = req.body.endDate
 var method = req.body.transportation
-
+console.log(sloc,eloc,sdate,edate,method);
 var dummuri;
 
   const urihotel = 'https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations'
@@ -182,14 +182,12 @@ var dummuri;
               console.log(finaldata.vehicleRates[0].id)
              }
               var object= {
-
                price: pricerange,
                location: sloc,
                destination: eloc,
                transportation: method,
                startDate: sdate,
                endDate: edate,
-               hotels: "hotelvar",
                user_id: 8
               }
               console.log(object.transportation)
