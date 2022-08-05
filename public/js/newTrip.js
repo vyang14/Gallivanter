@@ -1,4 +1,4 @@
-import * as Utils from './utils.js';
+// import * as Utils from './utils.js';
 
 var swapButton = document.getElementById('swap');
 var dropButton = document.getElementById('dropBtn');
@@ -132,23 +132,19 @@ for(var i = 0; i < 3; i++){
             prompt('Please do not leave any forms blank!');
             return;
         }
+
         const travelType = dropButton.textContent
         dropButton.textContent = this.lastChild.lastChild.textContent;
         allBtns.forEach(allBtns => allBtns.disabled=true);
-        debugger;
-        return {depart, destination, departDate, arriveDate, travelType};
+        return {location, destination, departDate, arriveDate, travelType};
         })
 }
 
 swapButton.addEventListener('click',function(){
-    var departForm = document.getElementById('departForm');
-    var goingTo = document.getElementById('goingTo');
-    var input1 = document.getElementById('departForm').value;
-    var input2 = document.getElementById('goingTo').value;
+    let departForm = document.getElementById('departForm');
+    let goingTo = document.getElementById('goingTo');
+    let input1 = document.getElementById('departForm').value;
+    let input2 = document.getElementById('goingTo').value;
     departForm.value = input2;
     goingTo.value = input1;
-    var departDate = document.getElementById('dateLeave').value;
-    var arriveDate = document.getElementById('dateReturn').value;
 })
-
-export {location, destination, departDate, arriveDate, travelType}
