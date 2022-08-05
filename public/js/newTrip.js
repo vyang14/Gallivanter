@@ -156,13 +156,15 @@ swapButton.addEventListener('click',function(){
 })
 const newTripFormhandler = async (event) => {
     allBtns.forEach(allBtns => allBtns.disabled=true);
-    const userInput = {
+    const invals = {
         depart: document.getElementById('departForm').value,
         destination: document.getElementById('goingTo').value,
         departDate: document.getElementById('dateLeave').value,
         arriveDate: document.getElementById('dateReturn').value,
         travelType: event.target.textContent
     }
+    var cut = invales.departDate.split("-")
+    console.log(cut);
     const userInputs = {
         price:1,
         location: document.getElementById('departForm').value,
@@ -174,7 +176,7 @@ const newTripFormhandler = async (event) => {
     }
     console.log(userInputs.location,userInputs.destination,userInputs.startDate,userInputs.endDate,userInputs.price, userInputs.user_id)
     console.log(userInputs);
-    if (userInput.depart,userInput.destination,userInput.departDate,userInput.travelType) {
+    if (1==2) {
         console.log("being read");
         const response = await fetch('/api/Trips', {
           method: 'POST',

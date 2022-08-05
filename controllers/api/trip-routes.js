@@ -9,9 +9,7 @@ const { User, Trip } = require('../../models');
 // GET all trips
 router.get('/', async (req, res) => {
   try {
-    const tripdata = await Trip.findAll({
-      include: [{ model: Trip }, {model: User}],
-    });
+    const tripdata = await Trip.findAll();
     res.status(200).json(tripdata);
   } catch (err) {
     res.status(500).json(err);
@@ -37,7 +35,9 @@ router.get('/:id', async (req, res) => {
 // CREATE a trip
 router.post('/', async (req, res) => {
   try {
-    console.log("WE GOT A REQUEST GENTS")
+    console.log("yeah")
+    console.log(req.body)
+    console.log("yeah")
   //  method = req.method;
    // sloc = req.Startingloc;
    /* eloc = req.endingloc;
@@ -139,7 +139,6 @@ var dummuri;
             console.error(error);
         });
       }
-      if(method=="HOTEL"){
           var options = {
               method: 'GET',
               url: 'https://priceline-com-provider.p.rapidapi.com/v1/hotels/search',
@@ -158,13 +157,13 @@ var dummuri;
               }
             };
             
-            finaldata = await axios.request(options).then(function (response) {
+            let finaldataH = await axios.request(options).then(function (response) {
                hold2data = response.data
                  return hold2data
             }).catch(function (error) {
                 console.error(error);
             });
-          }
+          
           if(method=="CAR"){
            var options = {
               method: 'GET',
@@ -186,7 +185,8 @@ var dummuri;
                 }).catch(function (error) {
                 });
               }
-              
+              //console.log(finaldataH)
+            //  console.log(finaldata)
               var object= {
                price: 1,
                location:"test2",
