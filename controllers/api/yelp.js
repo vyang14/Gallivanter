@@ -17,11 +17,11 @@ fetch("https://api.yelp.com/v3/businesses/search?latitude="+ gMaps.lat + "&longi
   })
   .then(function (data) {
     // console.log(data);
-    var pikachu = data.filter(function(data){
+    var yelpData = data.filter(function(data){
       return data.includes(input.toUpperCase())
     })
 
-  topFive(pikachu)
+  topFive(yelpData)
   });
 
 module.exports = router;

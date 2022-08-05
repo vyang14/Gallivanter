@@ -1,6 +1,5 @@
 const User = require('./Users');
 const Trip = require('./Trip');
-const Reviews = require('./Reviews');
 const UserRequest = require('./UserRequest');
 
 UserRequest.hasOne(Trip, {
@@ -12,11 +11,5 @@ User.hasMany(UserRequest, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE',
 });
-
-// The association can also be created from the Car side
-Trip.hasMany(Reviews, {
-    foreignKey: 'Trip_id',
-    onDelete: 'CASCADE',
-  });
 
 module.exports = { User, UserRequest,Trip, Reviews };

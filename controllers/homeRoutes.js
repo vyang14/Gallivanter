@@ -1,9 +1,6 @@
 const router = require("express").Router();
 const {
-  Completedtrip,
-  Reviews,
-  UserRequest,
-  Users,
+  Trip,
   User,
 } = require("../models");
 const withAuth = require("../utils/auth");
