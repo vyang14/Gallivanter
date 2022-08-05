@@ -19,6 +19,19 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 });
+router.get('/', async (req, res) => {
+  try {
+      const TripData = await Trip.findAll();
+      console.log(TripData);
+        const Trips = TripData.map((Trip) => Trip.get({ plain: true }));
+        console.log(users)
+      res.render('myTrip',
+         Trip
+         )
+  } catch (err) {
+      res.status(500).json(err);
+  }
+});
 
 //Login route
 router.get("/login", async (req, res) => {

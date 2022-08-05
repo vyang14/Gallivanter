@@ -8,7 +8,7 @@ var userInput = {};
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.datepicker');
     var instances = M.Datepicker.init(elems, {
-        format: 'yyyy-dd-mm',
+        format: 'yyyy-mm-dd',
         minDate: new Date(),
         firstDay: 0,
 });
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 for(var i = 0; i < 2; i++){
     let iteration = 'a'+i;
     var listEl = document.getElementById(iteration);
-
+   
     listEl.addEventListener('click', function(){
         const location = document.getElementById('departForm').value;
         const destination = document.getElementById('goingTo').value;
@@ -40,6 +40,7 @@ for(var i = 0; i < 2; i++){
 }
 
 swapButton.addEventListener('click',function(){
+ 
     var depart = document.getElementById('departForm');
     var destination = document.getElementById('goingTo');
     var input1 = document.getElementById('departForm').value;
@@ -48,26 +49,41 @@ swapButton.addEventListener('click',function(){
     depart.value = input2;
     destination.value = input1;
 })
-            
 const newTripFormhandler = async (event) => {
-    event.preventDefault();
-  
-    var depart = document.getElementById('departForm');
-    var destination = document.getElementById('goingTo');
-    var departDate = document.getElementById('dateLeave').value;
-    var arriveDate = document.getElementById('dateReturn').value;
-    var method = dropButton.textContent;
-    if (depart&&destination&&departDate&&arriveDate) {
-      const response = await fetch('/api/trip', {
-        method: 'POST',
-        body: JSON.stringify({ depart,destination,departDate,arriveDate,method}),
-        headers: { 'Content-Type': 'application/json' },
-      });
-  
-      if (response.ok) {
-       console.log("YES")
-      } else {
-        alert(response.statusText);
-      }
+    if(event.target.textContent!=="Let's go!"){
+    console.log("///")
+    console.log(event.target.textContent,)
+    console.log("///")
+    allBtns.forEach(allBtns => allBtns.disabled=true);
+    const userInputs = {
+        price:1,
+        location: document.getElementById('departForm').value,
+        destination: document.getElementById('goingTo').value,
+        startDate: document.getElementById('dateLeave').value,
+        endDate: document.getElementById('dateReturn').value,
+        transportation: event.target.textContent,
+        user_id:1
     }
-  };
+    //console.log(userInputs.location,userInputs.destination,userInputs.startDate,userInputs.endDate,userInputs.price, userInputs.user_id)
+    console.log(userInputs);
+    if (userInputs.location,userInputs.destination,userInputs.startDate,userInputs.endDate,userInputs.transportation) {
+         const response = await fetch('/api/Trips', {
+          method: 'POST',
+          body: JSON.stringify(userInputs),
+          headers: { 'Content-Type': 'application/json' },
+        });
+        if (response.ok) {
+         document.location.replace('/myTrip')
+        } else {
+          alert(response.statusText);
+        }
+      }
+    
+
+}
+}
+            
+
+
+  dropButton.addEventListener('click', newTripFormhandler);
+// window.initMap = initMap;
