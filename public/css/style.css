@@ -23,6 +23,6 @@ input::placeholder{
 }
 
 #map {
-    min-height: 400px;
-    height:100%
+    height: 800px;
+    width: 800px;
 }
