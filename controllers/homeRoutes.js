@@ -9,9 +9,9 @@ const { get } = require("./api");
 router.get('/', async (req, res) => {
     try {
         const userData = await User.findAll();
-        console.log(userData);
+
           const users = userData.map((user) => user.get({ plain: true }));
-          console.log(users)
+
         res.render('homepage',
            users
            )
