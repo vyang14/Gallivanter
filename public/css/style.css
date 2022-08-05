@@ -26,9 +26,3 @@ input::placeholder{
     min-height: 400px;
     height:100%
 }
-
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
