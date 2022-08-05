@@ -7,17 +7,16 @@ router.get('/', async (req, res) => {
   try {
     const userData = await User.findAll(
     );
-    console.log(userData);
     res.status(200).json(userData);
   } catch (err) {
-    res.status(500).json("cant get users");
+    res.status(500).json("Something went wrong. Please try again.");
   }
 });
 
 // GET a single user
 router.get('/:id', async (req, res) => {
   try {
-    const userData = await Reader.findByPk(req.params.id, {
+    const userData = await User.findByPk(req.params.id, {
       include: [{ model: User }],
     });
     if (!userData) {
@@ -30,7 +29,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// CREATE a reader
+// CREATE a user
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
@@ -46,7 +45,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// DELETE a reader
+// DELETE a User
 router.delete('/:id', async (req, res) => {
   try {
     const userData = await User.destroy({

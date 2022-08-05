@@ -3,36 +3,38 @@ const express = require('express');
 const path = require('path');
 const axios = require("axios");
 const app = express();
-const { User, UserRequest,Trip,Reviews } = require('../../models');
+const { User, Trip } = require('../../models');
 
   
-// GET all users
+// GET all trips
 router.get('/', async (req, res) => {
   try {
-    const Tripdata = await Trip.findAll();
-    res.status(200).json(Tripdata);
+    const tripdata = await Trip.findAll({
+      include: [{ model: Trip }, {model: User}],
+    });
+    res.status(200).json(tripdata);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// GET a single user
+// GET a single trip
 router.get('/:id', async (req, res) => {
   try {
-    const Tripdata = await Trip.findByPk(req.params.id, {
-        include: [{ model: Trip },{ model: UserRequest },{model: User}],
+    const tripdata = await Trip.findByPk(req.params.id, {
+        include: [{ model: Trip }, {model: User}],
     });
-    if (!Tripdata) {
-      res.status(404).json({ message: 'No Trip found with that id!' });
+    if (!tripdata) {
+      res.status(404).json({ message: 'No trip found with that id!' });
       return;
     }
-    res.status(200).json(Tripdata);
+    res.status(200).json(tripdata);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// CREATE a Trip
+// CREATE a trip
 router.post('/', async (req, res) => {
   try {
     console.log("WE GOT A REQUEST GENTS")
