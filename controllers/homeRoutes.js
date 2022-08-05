@@ -38,4 +38,12 @@ router.get('/newTrip', async (req, res) => {
     res.render('newTrip');
 });
 
+router.get('/myTrip', async (req, res) => {
+  if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+  }
+  res.render('myTrip');
+});
+
 module.exports = router;
