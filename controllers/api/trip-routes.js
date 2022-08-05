@@ -212,7 +212,9 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const tripdata = await Trip.findByPk(req.params.id, {
-        include: [{ model: Trip }, {model: User}],
+      where: {
+        id: req.params.id,
+      },
     });
     if (!tripdata) {
       res.status(404).json({ message: 'No trip found with that id!' });
