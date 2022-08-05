@@ -9,9 +9,9 @@ const { get } = require("./api");
 router.get('/', async (req, res) => {
     try {
         const userData = await User.findAll();
-        console.log(userData);
+
           const users = userData.map((user) => user.get({ plain: true }));
-          console.log(users)
+
         res.render('homepage',
            users
            )
@@ -49,6 +49,14 @@ router.get('/newTrip', async (req, res) => {
         return;
     }
     res.render('newTrip');
+});
+
+router.get('/myTrip', async (req, res) => {
+  if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+  }
+  res.render('myTrip');
 });
 
 module.exports = router;

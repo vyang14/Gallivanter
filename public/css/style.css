@@ -22,7 +22,7 @@ input::placeholder{
     height: 100%;
 }
 
-#gMap {
-    min-height: 500px;
-    max-height: fit-content;
+#map {
+    min-height: 400px;
+    height:100%
 }
