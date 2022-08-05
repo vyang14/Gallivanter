@@ -21,7 +21,7 @@ function weatherFetch(){
     var oneTemp = `${weatherData.main.temp}°F`;
     var oneWind = `${weatherData.wind.speed} mph` ;
     var oneHumid = `${weatherData.main.humidity}%`;
-    var oneCoord = {weatherData.coord.lat, weatherData.coord.lon};
+    var oneCoord = [weatherData.coord.lat, weatherData.coord.lon];
 })
 fetch("https://api.openweathermap.org/data/2.5/weather?q=" + destination + "&units=imperial&appid=629118eb1a8773a241db2bc4f0a52be4", {  headers: {
         Accept: "application/json",
@@ -43,9 +43,9 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=" + destination + "&uni
 }
 
 
-function revGeocode(){
+// function revGeocode(){
 
-}
+// }
 
 
 function searchMap(event){
