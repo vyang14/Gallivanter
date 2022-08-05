@@ -170,7 +170,6 @@ const newTripFormhandler = async (event) => {
         startDate: "2022-11-16",
         endDate: '2022-11-15',
         transportation: "AIRPORT",
-        
         user_id:1
     }
     console.log(userInputs.location,userInputs.destination,userInputs.startDate,userInputs.endDate,userInputs.price, userInputs.user_id)

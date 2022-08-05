@@ -12,4 +12,4 @@ User.hasMany(UserRequest, {
   onDelete: 'CASCADE',
 });
 
-module.exports = { User, UserRequest,Trip, Reviews };
+module.exports = { User, UserRequest,Trip};
