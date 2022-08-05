@@ -44,12 +44,14 @@ router.post('/', async (req, res) => {
     sdate= req.sdate;
     edate= req.edate;*/
     let finaldata
-var sloc = "london"
-var eloc = "atlanta"
-var sdate = "2022-11-15"
-var edate= "2022-11-16"
-var method = "CAR";
+var sloc = req.body.location
+var eloc = req.body.destination
+var sdate = req.body.startDate
+var edate = req.body.endDate
+var method = req.body.transportation
+
 var dummuri;
+
   const urihotel = 'https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations'
   const uriairport = 'https://priceline-com-provider.p.rapidapi.com/v1/flights/locations';
   const uricars = 'https://priceline-com-provider.p.rapidapi.com/v1/cars-rentals/locations';
@@ -62,7 +64,7 @@ var dummuri;
   var options = {
   method: 'GET',
   url: dummuri,
-  params: {name: sloc, search_type: method},
+  params: {name: sloc, search_type: "HOTEL"},
   headers: {
     'X-RapidAPI-Key': 'f4b4d02dc6msh7290f78fa18e2c8p1a94f7jsn8cb6126b8807',
     'X-RapidAPI-Host': 'priceline-com-provider.p.rapidapi.com'
@@ -82,24 +84,24 @@ var dummuri;
   let startvar = await axios.request(options).then(function (response) {
      return response.data
   }).catch(function (error) {
-  console.error(error);
+  console.error("Your shit didnt work on NON hotels loc data");
   });
   
   
   if(method==="HOTEL"){dummuri=urihotel}
       if(method==="AIRPORT"){dummuri=uriairport}
       if(method==="CAR"){dummuri=uricars}
-  if(method === "HOTEL"){
-  var options2 = {
+ 
+  var hoptions = {
     method: 'GET',
-    url: dummuri,
-    params: {name: eloc, search_type: method},
+    url: urihotel,
+    params: {name: eloc, search_type: "HOTEL"},
     headers: {
       'X-RapidAPI-Key': 'f4b4d02dc6msh7290f78fa18e2c8p1a94f7jsn8cb6126b8807',
       'X-RapidAPI-Host': 'priceline-com-provider.p.rapidapi.com'
     }
   };
-  }else{
+ 
     var options2={
       method: 'GET',
       url: dummuri,
@@ -109,12 +111,21 @@ var dummuri;
         'X-RapidAPI-Host': 'priceline-com-provider.p.rapidapi.com'
       }
   }
-  }
+  
   let destvar = await axios.request(options2).then(function (response) {
     return response.data
   }).catch(function (error) {
-    console.error(error);
+    console.error("Your shit didnt work on randos final data");
   });
+
+  let hotelvar = await axios.request(hoptions).then(function (response) {
+    return response.data
+  }).catch(function (error) {
+    console.error("Your shit didnt work on hotels starter data");
+  });
+  console.log(sdate+','+edate)
+  console.log(startvar[0].id+","+destvar[0].id)
+  console.log(destvar[0].id+","+startvar[0].id)
       if(method=="AIRPORT"){
       var options = {
           method: 'GET',
@@ -134,17 +145,18 @@ var dummuri;
         };
         
         finaldata = await axios.request(options).then(function (response) {
-            return response.data.getAirFlightRoundTrip.results.air_search_rsp
+            return response.data.getAirFlightRoundTrip.results.air_search_rsp.total_trip_summary
         }).catch(function (error) {
-            console.error(error);
+            console.error("Your shit didnt work on flights final data11");
         });
       }
+     
           var options = {
               method: 'GET',
               url: 'https://priceline-com-provider.p.rapidapi.com/v1/hotels/search',
               params: {
                 sort_order: 'HDR',
-                location_id: destvar[0].cityID,
+                location_id: hotelvar[0].cityID,
                 date_checkout: edate,
                 date_checkin: sdate,
                 star_rating_ids: '3.0,3.5,4.0,4.5,5.0',
@@ -161,7 +173,7 @@ var dummuri;
                hold2data = response.data
                  return hold2data
             }).catch(function (error) {
-                console.error(error);
+                console.error("Your shit didnt work on hotels final data");
             });
           
           if(method=="CAR"){
@@ -185,18 +197,29 @@ var dummuri;
                 }).catch(function (error) {
                 });
               }
-              //console.log(finaldataH)
-            //  console.log(finaldata)
+            console.log(finaldataH.hotels[0].ratesSummary.minPrice)
+            hotelstr = JSON.stringify(finaldataH.hotels);
+             //console.log(finaldata.minTotalFare)
+             if(method==="AIRPORT"){
+             var min =finaldata.minTotalFare + parseInt(finaldataH.hotels[0].ratesSummary.minPrice)
+             var max = finaldata.maxTotalFare + parseInt(finaldataH.hotels[0].ratesSummary.minPrice)
+             var pricerange = min+"-"+max;
+            }
+            if(method==="CAR"){
+              console.log(finaldata.vehicleRates[0].id)
+             }
               var object= {
-               price: 1,
-               location:"test2",
-               destination: "test2",
-               transportation:"teststring",
-               startDate: "test2",
-               endDate: "test2",
-               user_id: 2,
+               price: pricerange,
+               location:sloc,
+               destination: eloc,
+               transportation:method,
+               startDate: sdate,
+               endDate: edate,
+               hotels:hotelvar,
+               user_id: 8
               }
               console.log(object.transportation)
+             
     const Tripdata = await Trip.create(object);
     res.status(200).json(Tripdata);
   } catch (err) {

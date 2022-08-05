@@ -1,5 +1,7 @@
 
 
+
+
 var swapButton = document.getElementById('swap');
 var dropButton = document.getElementById('dropBtn');
 var allBtns = document.getElementsByName('userBtn');
@@ -7,7 +9,7 @@ var allBtns = document.getElementsByName('userBtn');
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.datepicker');
     var instances = M.Datepicker.init(elems, {
-        format: 'mm-dd-yyyy',
+        format: 'yyyy-mm-dd',
         minDate: new Date(),
         firstDay: 0,
 });
@@ -155,36 +157,30 @@ swapButton.addEventListener('click',function(){
 
 })
 const newTripFormhandler = async (event) => {
+    if(event.target.textContent!=="Let's go!"){
+    console.log("///")
+    console.log(event.target.textContent,)
+    console.log("///")
     allBtns.forEach(allBtns => allBtns.disabled=true);
-    const invals = {
-        depart: document.getElementById('departForm').value,
-        destination: document.getElementById('goingTo').value,
-        departDate: document.getElementById('dateLeave').value,
-        arriveDate: document.getElementById('dateReturn').value,
-        travelType: event.target.textContent
-    }
-    var cut = invales.departDate.split("-")
-    console.log(cut);
     const userInputs = {
         price:1,
         location: document.getElementById('departForm').value,
         destination: document.getElementById('goingTo').value,
-        startDate: "2022-11-16",
-        endDate: '2022-11-15',
-        transportation: "AIRPORT",
+        startDate: document.getElementById('dateLeave').value,
+        endDate: document.getElementById('dateReturn').value,
+        transportation: event.target.textContent,
         user_id:1
     }
-    console.log(userInputs.location,userInputs.destination,userInputs.startDate,userInputs.endDate,userInputs.price, userInputs.user_id)
+    //console.log(userInputs.location,userInputs.destination,userInputs.startDate,userInputs.endDate,userInputs.price, userInputs.user_id)
     console.log(userInputs);
-    if (1==2) {
-        console.log("being read");
-        const response = await fetch('/api/Trips', {
+    if (userInputs.location,userInputs.destination,userInputs.startDate,userInputs.endDate,userInputs.transportation) {
+         const response = await fetch('/api/Trips', {
           method: 'POST',
           body: JSON.stringify(userInputs),
           headers: { 'Content-Type': 'application/json' },
         });
         if (response.ok) {
-         console.log("YES")
+         document.location.replace('/myTrip')
         } else {
           alert(response.statusText);
         }
@@ -192,7 +188,7 @@ const newTripFormhandler = async (event) => {
     
 
 }
-
+}
             
 
 

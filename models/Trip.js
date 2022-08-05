@@ -12,7 +12,7 @@ Trip.init(
       autoIncrement: true,
     },
     price: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     location: {
@@ -32,6 +32,10 @@ Trip.init(
       allowNull: false,
     },
     endDate: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    hotels: {
       type: DataTypes.STRING,
       allowNull: false,
     },
