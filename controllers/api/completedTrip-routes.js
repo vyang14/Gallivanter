@@ -3,19 +3,14 @@ const express = require('express');
 const path = require('path');
 const axios = require("axios");
 const app = express();
-const { User, UserRequest,Completedtrip,Reviews } = require('../../models');
+const { User, UserRequest,Trip,Reviews } = require('../../models');
 
-async function pricecall(sdate,edate,sloc,eloc,method){
-  
-      }
   
 // GET all users
 router.get('/', async (req, res) => {
   try {
-    const completedtripdata = await Completedtrip.findAll({
-      include: [{ model: Completedtrip },{ model: UserRequest },{model: User}],
-    });
-    res.status(200).json(completedtripdata);
+    const Tripdata = await Trip.findAll();
+    res.status(200).json(Tripdata);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -24,22 +19,23 @@ router.get('/', async (req, res) => {
 // GET a single user
 router.get('/:id', async (req, res) => {
   try {
-    const completedtripdata = await Completedtrip.findByPk(req.params.id, {
-        include: [{ model: Completedtrip },{ model: UserRequest },{model: User}],
+    const Tripdata = await Trip.findByPk(req.params.id, {
+        include: [{ model: Trip },{ model: UserRequest },{model: User}],
     });
-    if (!completedtripdata) {
+    if (!Tripdata) {
       res.status(404).json({ message: 'No Trip found with that id!' });
       return;
     }
-    res.status(200).json(completedtripdata);
+    res.status(200).json(Tripdata);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// CREATE a Completedtrip
+// CREATE a Trip
 router.post('/', async (req, res) => {
   try {
+    console.log("WE GOT A REQUEST GENTS")
   //  method = req.method;
    // sloc = req.Startingloc;
    /* eloc = req.endingloc;
@@ -51,7 +47,6 @@ var eloc = "atlanta"
 var sdate = "2022-11-15"
 var edate= "2022-11-16"
 var method = "CAR";
-console.log("we searching")
 var dummuri;
   const urihotel = 'https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations'
   const uriairport = 'https://priceline-com-provider.p.rapidapi.com/v1/flights/locations';
@@ -191,33 +186,37 @@ var dummuri;
               }
               
               var object= {
-               Price: "1",
-              Location:"test2",
-               Reviews: "test2",
-               Locations: finaldata.returnDateTime
+               price: 1,
+               location:"test2",
+               destination: "test2",
+               transportation:"teststring",
+               startDate: "test2",
+               endDate: "test2",
+               user_id: 2,
               }
-    const completedtripdata = await Completedtrip.create(object);
-    res.status(200).json(completedtripdata);
+              console.log(object.transportation)
+    const Tripdata = await Trip.create(object);
+    res.status(200).json(Tripdata);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json("needs refactoring brodie");
   }
 });
 
-// DELETE a Completedtrip
+// DELETE a Trip
 router.delete('/:id', async (req, res) => {
   try {
-    const completedtripdata = await Completedtrip.destroy({
+    const Tripdata = await Trip.destroy({
       where: {
         id: req.params.id,
       },
     });
 
-    if (!completedtripdata) {
-      res.status(404).json({ message: 'No Completedtrip found with that id!' });
+    if (!Tripdata) {
+      res.status(404).json({ message: 'No Trip found with that id!' });
       return;
     }
 
-    res.status(200).json(completedtripdata);
+    res.status(200).json(Tripdata);
   } catch (err) {
     res.status(500).json(err);
   }

@@ -15,18 +15,22 @@ UserRequest.init(
     numpassenger: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue: 1
     },
     StartingLoc: {
       type: DataTypes.STRING,
       allowNull: false,
+      defaultValue: "e"
     },
     EndingLoc: {
       type: DataTypes.STRING,
       allowNull: false,
+      defaultValue: "e"
     },
     TransportMethod: {
       type: DataTypes.STRING,
       allowNull: false,
+      defaultValue: "e"
     },
   
   },

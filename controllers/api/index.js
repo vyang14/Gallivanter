@@ -6,7 +6,7 @@ const userRequestRoute = require('./userRequest-routes');
 const pricelineroute = require('./priceline-routes');
 
 router.use('/users', userRoute);
-router.use('/completedTrips', completedTripRoute);
+router.use('/Trips', completedTripRoute);
 router.use('/reviews', reviewsRoute);
 router.use('/userRequests', userRequestRoute);
 
