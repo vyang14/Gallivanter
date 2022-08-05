@@ -7,6 +7,7 @@ const gMaps = require('./utils');
             add input from gmaps.js to grab lat/long from search results
             export results to handlebars landing page*/
 
+function yelpFetch (data){
 fetch("https://api.yelp.com/v3/businesses/search?latitude="+ gMaps.lat + "&longitude=" + gMaps.long + "&limit=5", {  headers: {
     Accept: "application/json",
     Bearer: "uQWRDgNppQ4f5q6Xb3wtZtl0R3wnLMZLE3MNOYiHfUN9c7QBCLxJJTdRtbffhMIlbzLlWR-L3HWqgkbLNIH6RbqZ5Z4p9Q2Rk0cjLQiFiddNt6i-Y1xjNmtAS4_oYnYx"
@@ -17,11 +18,11 @@ fetch("https://api.yelp.com/v3/businesses/search?latitude="+ gMaps.lat + "&longi
   })
   .then(function (data) {
     // console.log(data);
-    var pikachu = data.filter(function(data){
+    var yelpData = data.filter(function(data){
       return data.includes(input.toUpperCase())
     })
 
-  topFive(pikachu)
+  topFive(yelpData)
   });
-
+}
 module.exports = router;

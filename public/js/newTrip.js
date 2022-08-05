@@ -141,10 +141,44 @@ for(var i = 0; i < 3; i++){
 }
 
 swapButton.addEventListener('click',function(){
-    let departForm = document.getElementById('departForm');
-    let goingTo = document.getElementById('goingTo');
-    let input1 = document.getElementById('departForm').value;
-    let input2 = document.getElementById('goingTo').value;
-    departForm.value = input2;
-    goingTo.value = input1;
+    var depart = document.getElementById('departForm');
+    var destination = document.getElementById('goingTo');
+    var input1 = document.getElementById('departForm').value;
+    var input2 = document.getElementById('goingTo').value;
+    depart.value = input2;
+    destination.value = input1;
+    var departDate = document.getElementById('dateLeave').value;
+    var arriveDate = document.getElementById('dateReturn').value;
+
 })
+            
+const newTripFormhandler = async (event) => {
+    event.preventDefault();
+  
+    var depart = document.getElementById('departForm');
+    var destination = document.getElementById('goingTo');
+    var input1 = document.getElementById('departForm').value;
+    var input2 = document.getElementById('goingTo').value;
+    depart.value = input2;
+    destination.value = input1;
+    var departDate = document.getElementById('dateLeave').value;
+    var arriveDate = document.getElementById('dateReturn').value;
+    method= "AIRPORT"
+    if (depart,destination,departDate,arriveDate) {
+      const response = await fetch('/api/users', {
+        method: 'POST',
+        body: JSON.stringify({ depart,destination,departDate,arriveDate,method}),
+        headers: { 'Content-Type': 'application/json' },
+      });
+  
+      if (response.ok) {
+       console.log("YES")
+      } else {
+        alert(response.statusText);
+      }
+    }
+  };
+
+  swapButton
+  .addEventListener('click', newTripFormhandler);
+// window.initMap = initMap;
