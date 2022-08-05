@@ -3,41 +3,41 @@ const express = require('express');
 const path = require('path');
 const axios = require("axios");
 const app = express();
-const { User, UserRequest,Completedtrip,Reviews } = require('../../models');
+const { User, Trip } = require('../../models');
 
 async function pricecall(sdate,edate,sloc,eloc,method){
   
       }
   
-// GET all users
+// GET all trips
 router.get('/', async (req, res) => {
   try {
-    const completedtripdata = await Completedtrip.findAll({
-      include: [{ model: Completedtrip },{ model: UserRequest },{model: User}],
+    const tripdata = await Trip.findAll({
+      include: [{ model: Trip }, {model: User}],
     });
-    res.status(200).json(completedtripdata);
+    res.status(200).json(tripdata);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// GET a single user
+// GET a single trip
 router.get('/:id', async (req, res) => {
   try {
-    const completedtripdata = await Completedtrip.findByPk(req.params.id, {
-        include: [{ model: Completedtrip },{ model: UserRequest },{model: User}],
+    const tripdata = await Trip.findByPk(req.params.id, {
+        include: [{ model: Trip }, {model: User}],
     });
-    if (!completedtripdata) {
-      res.status(404).json({ message: 'No Trip found with that id!' });
+    if (!tripdata) {
+      res.status(404).json({ message: 'No trip found with that id!' });
       return;
     }
-    res.status(200).json(completedtripdata);
+    res.status(200).json(tripdata);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// CREATE a Completedtrip
+// CREATE a trip
 router.post('/', async (req, res) => {
   try {
   //  method = req.method;
