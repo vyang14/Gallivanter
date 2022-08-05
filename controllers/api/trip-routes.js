@@ -209,13 +209,14 @@ var dummuri;
               console.log(finaldata.vehicleRates[0].id)
              }
               var object= {
+
                price: pricerange,
-               location:sloc,
+               location: sloc,
                destination: eloc,
-               transportation:method,
+               transportation: method,
                startDate: sdate,
                endDate: edate,
-               hotels:hotelvar,
+               hotels: "hotelvar",
                user_id: 8
               }
               console.log(object.transportation)
