@@ -22,16 +22,16 @@ router.post('/', async (req, res) => {
 // User Login
 router.post("/login/:id", async (req, res) => {
   try {
-    const dbUserData = await User.findByPk(req.params.id);
+    const userData = await User.findByPk(req.params.id);
 
-    if (!dbUserData) {
+    if (!userData) {
       res
         .status(400)
         .json({ message: "Incorrect email or password. Please try again!" });
       return;
     }
 
-    const validPassword = await dbUserData.checkPassword(req.body.password);
+    const validPassword = await userData.checkPassword(req.body.password);
     if (!validPassword) {
       res
         .status(400)
@@ -43,7 +43,7 @@ router.post("/login/:id", async (req, res) => {
       req.session.user_id = userData.id;
       req.session.loggedIn = true;
 
-      res.status(200).json({ user: dbUserData, message: "You are logged in!" });
+      res.status(200).json({ user: userData, message: "You are logged in!" });
     });
   } catch (err) {
     console.log(err);
