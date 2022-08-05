@@ -6,33 +6,6 @@ const app = express();
 const { User, Trip } = require('../../models');
 
   
-// GET all trips
-router.get('/', async (req, res) => {
-  try {
-    const tripdata = await Trip.findAll();
-    res.status(200).json(tripdata);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// GET a single trip
-router.get('/:id', async (req, res) => {
-  try {
-    const tripdata = await Trip.findByPk(req.params.id, {
-        include: [{ model: Trip }, {model: User}],
-    });
-    if (!tripdata) {
-      res.status(404).json({ message: 'No trip found with that id!' });
-      return;
-    }
-    res.status(200).json(tripdata);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// CREATE a trip
 router.post('/', async (req, res) => {
   try {
     console.log("yeah")
@@ -227,6 +200,34 @@ var dummuri;
     res.status(400).json("needs refactoring brodie");
   }
 });
+// GET all trips
+router.get('/', async (req, res) => {
+  try {
+    const tripdata = await Trip.findAll();
+    res.status(200).json(tripdata);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// GET a single trip
+router.get('/:id', async (req, res) => {
+  try {
+    const tripdata = await Trip.findByPk(req.params.id, {
+        include: [{ model: Trip }, {model: User}],
+    });
+    if (!tripdata) {
+      res.status(404).json({ message: 'No trip found with that id!' });
+      return;
+    }
+    res.status(200).json(tripdata);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// CREATE a trip
+
 
 // DELETE a Trip
 router.delete('/:id', async (req, res) => {
