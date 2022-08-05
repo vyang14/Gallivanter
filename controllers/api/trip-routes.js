@@ -187,15 +187,15 @@ var dummuri;
                destination: eloc,
                transportation: method,
                startDate: sdate,
-               endDate: edate,
-               user_id: 8
+               endDate: edate
               }
               console.log(object.transportation)
-             
+             console.log(object);
     const Tripdata = await Trip.create(object);
+    console.log(Tripdata);
     res.status(200).json(Tripdata);
   } catch (err) {
-    res.status(400).json("needs refactoring brodie");
+    res.status(400).json(err);
   }
 });
 // GET all trips
@@ -212,7 +212,9 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const tripdata = await Trip.findByPk(req.params.id, {
-        include: [{ model: Trip }, {model: User}],
+      where: {
+        id: req.params.id,
+      },
     });
     if (!tripdata) {
       res.status(404).json({ message: 'No trip found with that id!' });

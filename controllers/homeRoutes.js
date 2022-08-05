@@ -19,15 +19,12 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 });
-router.get('/', async (req, res) => {
+router.get('/myTrip', async (req, res) => {
   try {
       const TripData = await Trip.findAll();
-      console.log(TripData);
+      console.log("it is getting this")
         const Trips = TripData.map((Trip) => Trip.get({ plain: true }));
-        console.log(users)
-      res.render('myTrip',
-         Trip
-         )
+      res.render('myTrip',{Trips})
   } catch (err) {
       res.status(500).json(err);
   }

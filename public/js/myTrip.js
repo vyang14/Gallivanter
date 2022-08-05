@@ -1,11 +1,10 @@
-import { yelpFetch } from "./yelp";
-import *  as Utils from "./utils";
+
 
 window.init = Utils.initMap();
 
-var userData = {
+var Trip = {
     method: 'GET',
-    url: 'localhost:3001/api/trip',
+    url: 'localhost:3001/api/Trips',
     body: JSON.stringify({}),
     headers: { 'Content-Type': 'application/json' },
   };
