@@ -2,13 +2,13 @@
 <div class="container">
     <div class="row userInput">
         <div class="row destination">
-            <p><a href="/Trip/{{trip.id}}">Trip from {{location}} to {{destination}} </a>on {{startDate}} - {{endDate}}.</p>
+            <p><a href="/Trip/{{trip.id}}">Trip from {{trip.location}} to {{trip.destination}} </a>on {{trip.startDate}} - {{trip.endDate}}.</p>
             <p>Trip has a price range of ${{trip.price}} .</p>
         </div>
     </div>
 
     <div class="row tripData">
-        {{trip.tripData}}
+        {{trip.trip}}
     </div>
     
 </div>

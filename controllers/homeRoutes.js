@@ -42,7 +42,7 @@ router.get("/login", (req, res) => {
 //Create a Trip Route
 router.get('/newTrip', (req, res) => { //require withAuth
     if (req.session.loggedIn) {
-        res.redirect('/newTrip');
+        res.redirect('/');
         return;
     }
     res.render('newTrip');
@@ -50,10 +50,10 @@ router.get('/newTrip', (req, res) => { //require withAuth
 
 router.get('/myTrip', (req, res) => { //require withAuth
   if (req.session.loggedIn) {
-      res.redirect('/login');
+      res.redirect('/');
       return;
   }
-  res.render('trip');
+  res.render('myTrip');
 });
 
 module.exports = router;
