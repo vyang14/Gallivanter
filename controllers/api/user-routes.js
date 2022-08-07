@@ -20,9 +20,13 @@ router.post('/', async (req, res) => {
 });
 
 // User Login
-router.post("/login/:id", async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
-    const userData = await User.findByPk(req.params.id);
+    const userData = await User.findOne({
+      where: {
+        email: req.body.email
+      }
+    });
 
     if (!userData) {
       res

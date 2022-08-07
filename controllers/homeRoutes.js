@@ -31,7 +31,7 @@ router.get('/myTrip', async (req, res) => {
 });
 
 //Login route
-router.get("/login", async (req, res) => {
+router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
     return;
@@ -40,20 +40,20 @@ router.get("/login", async (req, res) => {
 });
 
 //Create a Trip Route
-router.get('/newTrip', async (req, res) => {
+router.get('/newTrip', withAuth, (req, res) => {
     if (req.session.loggedIn) {
-        res.redirect('/');
+        res.redirect('/login');
         return;
     }
-    res.render('newTrip');
+    res.render('trip');
 });
 
-router.get('/myTrip', async (req, res) => {
+router.get('/myTrip', withAuth, (req, res) => {
   if (req.session.loggedIn) {
-      res.redirect('/');
+      res.redirect('/login');
       return;
   }
-  res.render('myTrip');
+  res.render('trip');
 });
 
 module.exports = router;
