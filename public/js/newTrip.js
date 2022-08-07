@@ -67,7 +67,7 @@ const newTripFormhandler = async (event) => {
       method: event.target.textContent,
       user_id: 1,
     };
-    //console.log(userInputs.location,userInputs.destination,userInputs.startDate,userInputs.endDate,userInputs.price, userInputs.user_id)
+    
     console.log(userInputs);
     if (
       (userInputs.location,
@@ -76,7 +76,7 @@ const newTripFormhandler = async (event) => {
       userInputs.endDate,
       userInputs.method)
     ) {
-      const response = await fetch("/api/trips", {
+      const response = await fetch("/api/trips", { //this is where it is breaking
         method: "POST",
         body: JSON.stringify(userInputs),
         headers: { "Content-Type": "application/json" },
