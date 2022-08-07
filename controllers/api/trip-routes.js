@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
     var destination = req.body.destination;
     var startDate = req.body.startDate;
     var endDate = req.body.endDate;
-    var method = req.body.transportation;
+    var method = req.body.method;
     console.log(location, destination, startDate, endDate, method);
     var dummuri;
 
@@ -63,7 +63,7 @@ router.post("/", async (req, res) => {
         return response.data;
       })
       .catch(function (error) {
-        console.error("Could not find NON hotels loc data");
+        console.error("Could not find location data.");
       });
 
     if (method === "HOTEL") {
@@ -102,7 +102,7 @@ router.post("/", async (req, res) => {
         return response.data;
       })
       .catch(function (error) {
-        console.error("Could not find randos final data");
+        console.error("Could not find destination data");
       });
 
     let hotelvar = await axios
@@ -111,7 +111,7 @@ router.post("/", async (req, res) => {
         return response.data;
       })
       .catch(function (error) {
-        console.error("Could not find hotels starter data");
+        console.error("Could not find hotel data");
       });
     console.log(startDate + "," + endDate);
     console.log(startvar[0].id + "," + destvar[0].id);
@@ -216,12 +216,11 @@ router.post("/", async (req, res) => {
       price: pricerange,
       location: location,
       destination: destination,
-      transportation: method,
+      method: method,
       startDate: startDate,
       endDate: endDate,
     };
-    console.log(object.transportation);
-    console.log(object);
+
     const Tripdata = await Trip.create(object);
     console.log(Tripdata);
     res.status(200).json(Tripdata);
