@@ -40,15 +40,15 @@ router.get("/login", (req, res) => {
 });
 
 //Create a Trip Route
-router.get('/newTrip', withAuth, (req, res) => {
+router.get('/newTrip', (req, res) => { //require withAuth
     if (req.session.loggedIn) {
-        res.redirect('/login');
+        res.redirect('/newTrip');
         return;
     }
-    res.render('trip');
+    res.render('newTrip');
 });
 
-router.get('/myTrip', withAuth, (req, res) => {
+router.get('/myTrip', (req, res) => { //require withAuth
   if (req.session.loggedIn) {
       res.redirect('/login');
       return;
