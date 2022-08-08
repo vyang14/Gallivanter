@@ -16,6 +16,6 @@ if(process.env.JASWDB_URL) {
             port: 3306
         },
     );
-}
+};
 
 module.exports = sequelize;
