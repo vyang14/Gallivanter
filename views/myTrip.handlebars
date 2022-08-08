@@ -1,10 +1,10 @@
 {{#each Trips as |trip|}}
-<div class="row">
+<div class="container">
     <div class="row userInput">
-        <h3 class="destination">
-            <a href="/Trip/{{trip.id}}">Trip from {{location}} to {{destination}} on {{startDate}} - {{endDate}}.</a>
-            <a href="/Trip/{{trip.id}}">Trip has a price range of {{trip.price}} .</a>
-        </h3>
+        <div class="row destination">
+            <p><a href="/Trip/{{trip.id}}">Trip from {{location}} to {{destination}}</a> on {{startDate}} - {{endDate}}.</p>
+            <p>Price range: ${{trip.price}} by {{method}}.</p>
+        </div>
     </div>
 
     <div class="row tripData">
