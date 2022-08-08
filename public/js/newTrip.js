@@ -29,12 +29,7 @@ for (var i = 0; i < 2; i++) {
     const startDate = document.getElementById("startDate").value;
     const endDate = document.getElementById("endDate").value;
 
-    if (
-      location === undefined ||
-      destination === undefined ||
-      startDate === undefined ||
-      endDate === undefined
-    ) {
+    if (location === undefined || destination === undefined || startDate === undefined || endDate === undefined) {
       prompt("Please do not leave any forms blank!");
       return;
     }
