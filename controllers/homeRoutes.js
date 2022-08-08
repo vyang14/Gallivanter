@@ -1,32 +1,27 @@
 const router = require("express").Router();
-const {
-  Trip,
-  User,
-} = require("../models");
+const { Trip, User } = require("../models");
 const withAuth = require("../utils/auth");
 const { get } = require("./api");
 
-router.get('/', async (req, res) => {
-    try {
-        const userData = await User.findAll();
-
-          const users = userData.map((user) => user.get({ plain: true }));
-
-        res.render('homepage',
-           users
-           )
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-router.get('/myTrip', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-      const TripData = await Trip.findAll();
-      console.log("it is getting this")
-        const Trips = TripData.map((Trip) => Trip.get({ plain: true }));
-      res.render('myTrip',{Trips})
+    const userData = await User.findAll();
+
+    const users = userData.map((user) => user.get({ plain: true }));
+
+    res.render("homepage", users);
   } catch (err) {
-      res.status(500).json(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/myTrip", async (req, res) => {
+  try {
+    const TripData = await Trip.findAll();
+    const Trips = TripData.map((Trip) => Trip.get({ plain: true }));
+    res.render("myTrip", { Trips });
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
@@ -40,20 +35,23 @@ router.get("/login", (req, res) => {
 });
 
 //Create a Trip Route
-router.get('/newTrip', (req, res) => { //require withAuth
-    if (req.session.loggedIn) {
-        res.redirect('/');
-        return;
-    }
-    res.render('newTrip');
+router.get("/newTrip", withAuth, async (req, res) => {
+  try {
+    const TripData = await Trip.findAll();
+    const Trips = TripData.map((Trip) => Trip.get({ plain: true}));
+    res.render("myTrip", {Trips})  
+  } catch (err) {
+    res.status(500).json(err);
+  }  
 });
 
-router.get('/myTrip', (req, res) => { //require withAuth
+router.get("/myTrip", withAuth, (req, res) => {
+
   if (req.session.loggedIn) {
-      res.redirect('/');
-      return;
+    res.redirect("/");
+    return;
   }
-  res.render('myTrip');
+  res.render("myTrip");
 });
 
 module.exports = router;

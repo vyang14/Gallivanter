@@ -7,7 +7,6 @@ const { User, Trip } = require("../../models");
 
 router.post("/", async (req, res) => {
   try {
-    console.log(req.body);
 
     let tripData;
     var location = req.body.location;
@@ -15,25 +14,16 @@ router.post("/", async (req, res) => {
     var startDate = req.body.startDate;
     var endDate = req.body.endDate;
     var method = req.body.method;
-    console.log(location, destination, startDate, endDate, method);
+    console.log(location, destination, startDate, endDate, method);  //DELETE BEFORE SUBMIT
     var dummuri;
 
-    const urihotel =
-      "https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations";
-    const uriairport =
-      "https://priceline-com-provider.p.rapidapi.com/v1/flights/locations";
-    const uricars =
-      "https://priceline-com-provider.p.rapidapi.com/v1/cars-rentals/locations";
+    const urihotel = "https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations";
+    const uriairport = "https://priceline-com-provider.p.rapidapi.com/v1/flights/locations";
+    const uricars = "https://priceline-com-provider.p.rapidapi.com/v1/cars-rentals/locations";
 
-    if (method === "HOTEL") {
-      dummuri = urihotel;
-    }
-    if (method === "AIRPORT") {
-      dummuri = uriairport;
-    }
-    if (method === "CAR") {
-      dummuri = uricars;
-    }
+    if (method === "HOTEL") { dummuri = urihotel};
+    if (method === "AIRPORT") {dummuri = uriairport};
+    if (method === "CAR") {dummuri = uricars};
     if (method === "HOTEL") {
       var options = {
         method: "GET",
@@ -57,24 +47,16 @@ router.post("/", async (req, res) => {
         },
       };
     }
-    let startvar = await axios
-      .request(options)
-      .then(function (response) {
-        return response.data;
-      })
-      .catch(function (error) {
+
+    let startvar = await axios.request(options).then(function (response) {
+        return response.data
+      }).catch(function (error) {
         console.error("Could not find location data.");
       });
 
-    if (method === "HOTEL") {
-      dummuri = urihotel;
-    }
-    if (method === "AIRPORT") {
-      dummuri = uriairport;
-    }
-    if (method === "CAR") {
-      dummuri = uricars;
-    }
+    if (method === "HOTEL") {dummuri = urihotel};
+    if (method === "AIRPORT") {dummuri = uriairport};
+    if (method === "CAR") {dummuri = uricars};
 
     var hoptions = {
       method: "GET",
@@ -96,26 +78,22 @@ router.post("/", async (req, res) => {
       },
     };
 
-    let destvar = await axios
-      .request(options2)
-      .then(function (response) {
+    let destvar = await axios.request(options2).then(function (response) {
         return response.data;
-      })
-      .catch(function (error) {
+      }).catch(function (error) {
         console.error("Could not find destination data");
       });
 
-    let hotelvar = await axios
-      .request(hoptions)
-      .then(function (response) {
+    let hotelvar = await axios.request(hoptions).then(function (response) {
         return response.data;
-      })
-      .catch(function (error) {
+      }).catch(function (error) {
         console.error("Could not find hotel data");
       });
+
     console.log(startDate + "," + endDate);
     console.log(startvar[0].id + "," + destvar[0].id);
     console.log(destvar[0].id + "," + startvar[0].id);
+
     if (method == "AIRPORT") {
       var options = {
         method: "GET",
@@ -134,14 +112,10 @@ router.post("/", async (req, res) => {
         },
       };
 
-      tripData = await axios
-        .request(options)
-        .then(function (response) {
-          return response
-            .data.getAirFlightRoundTrip.results.air_search_rsp.total_trip_summary;
-        })
-        .catch(function (error) {
-          console.error("Could not find flights final data11");
+      finalData = await axios.request(options).then(function (response) {
+          return response.data.getAirFlightRoundTrip.results.air_search_rsp.total_trip_summary;
+        }).catch(function (error) {
+          console.error("Could not find flight data.")
         });
     }
 
@@ -163,13 +137,10 @@ router.post("/", async (req, res) => {
       },
     };
 
-    let tripDataH = await axios
-      .request(options)
-      .then(function (response) {
+    let tripDataH = await axios.request(options).then(function (response) {
         hold2data = response.data;
         return hold2data;
-      })
-      .catch(function (error) {
+      }).catch(function (error) {
         console.error("Could not find hotels final data");
       });
 
@@ -190,25 +161,22 @@ router.post("/", async (req, res) => {
         },
       };
 
-      tripData = await axios
-        .request(options)
-        .then(function (response) {
+      finalData = await axios.request(options).then(function (response) {
           return response.data;
-        })
-        .catch(function (error) {});
+        }).catch(function (error) {
+          console.log("Could not find the data.")
+        });
     }
+
     console.log(tripDataH.hotels[0].ratesSummary.minPrice);
     hotelstr = JSON.stringify(tripDataH.hotels);
 
     if (method === "AIRPORT") {
-      var min =
-        tripData.minTotalFare +
-        parseInt(tripDataH.hotels[0].ratesSummary.minPrice);
-      var max =
-        tripData.maxTotalFare +
-        parseInt(tripDataH.hotels[0].ratesSummary.minPrice);
+      var min = tripData.minTotalFare + parseInt(tripDataH.hotels[0].ratesSummary.minPrice);
+      var max = tripData.maxTotalFare + parseInt(tripDataH.hotels[0].ratesSummary.minPrice);
       var pricerange = min + "-" + max;
     };
+    
     if (method === "CAR") {
       console.log(tripData.vehicleRates[0].id);
     };
