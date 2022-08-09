@@ -20,9 +20,9 @@
 
   ## Usage
 
-  This website has been deployed through GitHub and Heroku and can be accessed in the links:
+  This website has been deployed through Heroku and can be accessed in the links:
   Heroku: 
-  GitHub: https://teagrinforde.github.io/Gallivanter/   
+  GitHub: https://quiet-eyrie-99473.herokuapp.com/
 
   ## Contribution Guidelines
 
