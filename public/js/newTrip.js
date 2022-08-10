@@ -1,5 +1,3 @@
-// import * as Utils from './utils.js';
-
 var swapButton = document.getElementById("swap");
 var dropButton = document.getElementById("dropBtn");
 var allBtns = document.getElementsByName("userBtn");
@@ -86,4 +84,5 @@ const newTripFormhandler = async (event) => {
 };
 
 dropButton.addEventListener("click", newTripFormhandler);
-// window.initMap = initMap;
+
+export {userInput};

@@ -5,42 +5,8 @@
             add input from handlebars and obtain lat/long from search results
             export results to yelp.js landing page*/
 
-function weatherFetch(){
-    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + depart + "&units=imperial&appid=629118eb1a8773a241db2bc4f0a52be4", {  headers: {
-        Accept: "application/json",
-    }
-    })
-.then(function(response){
-    if(!response.ok){
-        throw response.json();
-    }
-    return response.json();
-    })
-.then(function(weatherData){
-    var cityOne = `${weatherData.name}, ${weatherData.sys.country}`;
-    var oneTemp = `${weatherData.main.temp}°F`;
-    var oneWind = `${weatherData.wind.speed} mph` ;
-    var oneHumid = `${weatherData.main.humidity}%`;
-    var oneCoord = [weatherData.coord.lat, weatherData.coord.lon];
-})
-fetch("https://api.openweathermap.org/data/2.5/weather?q=" + destination + "&units=imperial&appid=629118eb1a8773a241db2bc4f0a52be4", {  headers: {
-        Accept: "application/json",
-    }
-    })
-.then(function(response){
-    if(!response.ok){
-        throw response.json();
-    }
-    return response.json();
-    })
-.then(function(weatherData){
-    var cityTwo = `${weatherData.name}, ${weatherData.sys.country}`;
-    var twoTemp = `${weatherData.main.temp}°F`;
-    var twoWind = `${weatherData.wind.speed} mph`;
-    var twoHumid = `${weatherData.main.humidity}%`;
-    var twoCoord = [weatherData.coord.lat, weatherData.coord.lon];
-})
-}
+
+
 
 
 // function revGeocode(){
@@ -65,4 +31,4 @@ function initMap() {
     });
 }
 
-export { addGeocode, revGeocode, searchMap, initMap }
+module.export = { weatherFetch, addGeocode, searchMap, initMap };

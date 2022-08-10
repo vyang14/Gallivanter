@@ -17,7 +17,6 @@ fetch("https://api.yelp.com/v3/businesses/search?latitude="+ gMaps.lat + "&longi
     return response.json();
   })
   .then(function (data) {
-    // console.log(data);
     var yelpData = data.filter(function(data){
       return data.includes(input.toUpperCase())
     })

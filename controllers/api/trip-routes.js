@@ -8,18 +8,20 @@ const { User, Trip } = require("../../models");
 router.post("/", async (req, res) => {
   try {
 
-    let tripData;
-    var location = req.body.location;
-    var destination = req.body.destination;
-    var startDate = req.body.startDate;
-    var endDate = req.body.endDate;
-    var method = req.body.method;
-    console.log(location, destination, startDate, endDate, method);  //DELETE BEFORE SUBMIT
+    let finaldata
+    var sloc = req.body.location
+    var eloc = req.body.destination
+    var sdate = req.body.startDate
+    var edate = req.body.endDate
+    var method = req.body.transportation
     var dummuri;
 
     const urihotel = "https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations";
     const uriairport = "https://priceline-com-provider.p.rapidapi.com/v1/flights/locations";
     const uricars = "https://priceline-com-provider.p.rapidapi.com/v1/cars-rentals/locations";
+
+    let origindata;
+    let destindata;
 
     if (method === "HOTEL") { dummuri = urihotel};
     if (method === "AIRPORT") {dummuri = uriairport};
@@ -31,7 +33,7 @@ router.post("/", async (req, res) => {
         params: { name: location, search_type: "HOTEL" },
         headers: {
           "X-RapidAPI-Key":
-            "f4b4d02dc6msh7290f78fa18e2c8p1a94f7jsn8cb6126b8807",
+            "9dac82d08fmshd5fd50a1ce5d728p1d63dajsn47ccb1ccda9b",
           "X-RapidAPI-Host": "priceline-com-provider.p.rapidapi.com",
         },
       };
@@ -63,7 +65,7 @@ router.post("/", async (req, res) => {
       url: urihotel,
       params: { name: destination, search_type: "HOTEL" },
       headers: {
-        "X-RapidAPI-Key": "f4b4d02dc6msh7290f78fa18e2c8p1a94f7jsn8cb6126b8807",
+        "X-RapidAPI-Key": "9dac82d08fmshd5fd50a1ce5d728p1d63dajsn47ccb1ccda9b",
         "X-RapidAPI-Host": "priceline-com-provider.p.rapidapi.com",
       },
     };
@@ -73,7 +75,7 @@ router.post("/", async (req, res) => {
       url: dummuri,
       params: { name: destination },
       headers: {
-        "X-RapidAPI-Key": "f4b4d02dc6msh7290f78fa18e2c8p1a94f7jsn8cb6126b8807",
+        "X-RapidAPI-Key": "9dac82d08fmshd5fd50a1ce5d728p1d63dajsn47ccb1ccda9b",
         "X-RapidAPI-Host": "priceline-com-provider.p.rapidapi.com",
       },
     };
@@ -107,7 +109,7 @@ router.post("/", async (req, res) => {
         },
         headers: {
           "X-RapidAPI-Key":
-            "f4b4d02dc6msh7290f78fa18e2c8p1a94f7jsn8cb6126b8807",
+            "9dac82d08fmshd5fd50a1ce5d728p1d63dajsn47ccb1ccda9b",
           "X-RapidAPI-Host": "priceline-com-provider.p.rapidapi.com",
         },
       };
@@ -132,7 +134,7 @@ router.post("/", async (req, res) => {
         amenities_ids: "FINTRNT,FBRKFST",
       },
       headers: {
-        "X-RapidAPI-Key": "f4b4d02dc6msh7290f78fa18e2c8p1a94f7jsn8cb6126b8807",
+        "X-RapidAPI-Key": "9dac82d08fmshd5fd50a1ce5d728p1d63dajsn47ccb1ccda9b",
         "X-RapidAPI-Host": "priceline-com-provider.p.rapidapi.com",
       },
     };
@@ -156,7 +158,7 @@ router.post("/", async (req, res) => {
         },
         headers: {
           "X-RapidAPI-Key":
-            "f4b4d02dc6msh7290f78fa18e2c8p1a94f7jsn8cb6126b8807",
+            "9dac82d08fmshd5fd50a1ce5d728p1d63dajsn47ccb1ccda9b",
           "X-RapidAPI-Host": "priceline-com-provider.p.rapidapi.com",
         },
       };

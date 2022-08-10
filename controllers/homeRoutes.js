@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 });
 
 //Login route
-router.get("/login", (req, res) => {
+router.get("/login", async (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
     return;
@@ -47,7 +47,7 @@ router.get("/myTrip", async (req, res) => {
   }
 });
 
-router.get("/myTrip", (req, res) => {
+router.get("/myTrip", async (req, res) => {
 
   if (req.session.loggedIn) {
     res.redirect("/");
